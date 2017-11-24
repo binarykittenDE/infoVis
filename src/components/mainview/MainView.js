@@ -2,39 +2,43 @@ import React from 'react';
 import {MainViewHeader} from './MainViewHeader';
 import TouristService from '../../services/TouristService';
 import Util from '../../services/Util';
+import { PieChart, Pie, Tooltip, Cell } from 'recharts';
 
-google.charts.load('current', {'packages':['corechart']});
 
 export class MainView extends React.Component {
     constructor() {
         super();
         this.state = {
             touristInfos: [],
-            touristInfosHeader: []
+            touristInfosHeader: [],
+            graphUsableTouristInfos: []
         };
-        google.charts.setOnLoadCallback(() => this.renderGoogleTable());
     }
 
     componentDidMount() {
-        let touristInfos = TouristService.getAllTouristInfos();
+        let touristInfos = TouristService.getAllTouristInfosForGivenYear('2017');
         touristInfos.then(
-            info =>
+            info =>{
+                let touristInfos = Util.getResults(info);
+                let graphUsableTouristInfos = [];
+
+                touristInfos.forEach(element =>  {
+                    if(element.AUSPRAEGUNG == 'insgesamt'){
+                        console.log(element);
+                        graphUsableTouristInfos.push({
+                            name: Util.monthNumberToMonthString(element.MONAT),
+                            value: parseInt(element.WERT)
+                        })
+                    }
+                });
+
                 this.setState({
-                    touristInfos: Util.getResults(info)
+                    graphUsableTouristInfos : graphUsableTouristInfos,
+                    touristInfos: touristInfos
                 })
+            }
+
         );
-        //this.renderGoogleTable();
-    }
-
-    componentDidUpdate(){
-        this.renderGoogleTable();
-    }
-
-    renderGoogleTable(){
-        let data = google.visualization.arrayToDataTable(this.state.touristInfos);
-
-        let table = new google.visualization.Table(document.getElementById('table_div'));
-        table.draw(data, {showRowNumber: true, width: '100%', height: '100%'});
     }
 
     render() {
@@ -44,7 +48,16 @@ export class MainView extends React.Component {
                 <div className="mid-region">
                     <div className="content">
                         <div className="problem-list">
-                            <div id="table_div"></div>
+                            <PieChart width={800} height={400}>
+                                <Pie data={this.state.graphUsableTouristInfos} cx={200} cy={200} outerRadius={80} fill="#8884d8" label>
+                                    { //Map a color per entry
+                                        this.state.graphUsableTouristInfos.map((entry, index) => (
+                                            <Cell key={`cell-${index}`} fill={Util.getColor(index)}/>
+                                        ))
+                                    }
+                                </Pie>
+                                <Tooltip/>
+                            </PieChart>
                         </div>
                     </div>
                 </div>
