@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import 'whatwg-fetch'; //Github fetch
 import {Router, Route, Link} from 'react-router'
-import {MainView} from './components/searchandoverview/MainView';
+import {MainView} from './components/mainview/MainView';
 
 require("./App.scss");
 //var url = require("./assets/imagename.png");

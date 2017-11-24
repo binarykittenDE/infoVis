@@ -3,6 +3,8 @@ import {MainViewHeader} from './MainViewHeader';
 import TouristService from '../../services/TouristService';
 import Util from '../../services/Util';
 
+google.charts.load('current', {'packages':['corechart']});
+
 export class MainView extends React.Component {
     constructor() {
         super();
@@ -10,6 +12,7 @@ export class MainView extends React.Component {
             touristInfos: [],
             touristInfosHeader: []
         };
+        google.charts.setOnLoadCallback(() => this.renderGoogleTable());
     }
 
     componentDidMount() {
@@ -20,7 +23,18 @@ export class MainView extends React.Component {
                     touristInfos: Util.getResults(info)
                 })
         );
+        //this.renderGoogleTable();
+    }
+
+    componentDidUpdate(){
         this.renderGoogleTable();
+    }
+
+    renderGoogleTable(){
+        let data = google.visualization.arrayToDataTable(this.state.touristInfos);
+
+        let table = new google.visualization.Table(document.getElementById('table_div'));
+        table.draw(data, {showRowNumber: true, width: '100%', height: '100%'});
     }
 
     render() {
@@ -37,22 +51,5 @@ export class MainView extends React.Component {
 
             </div>
         );
-    }
-
-    renderGoogleTable(){
-        google.load("visualization", "1", {packages:["corechart"]});
-        google.charts.setOnLoadCallback(drawChart);
-
-        var drawChart = function(){
-            google.setOnLoadCallback(drawChart);
-            let data = google.visualization.arrayToDataTable(this.state.touristInfos);
-
-            var table = new google.visualization.Table(document.getElementById('table_div'));
-            table.draw(data, {showRowNumber: true, width: '100%', height: '100%'});
-        }
-    }
-
-    renderTable(currentInfo) {
-        return <p>{currentInfo.AUSPRAEGUNG}</p>;
     }
 }
