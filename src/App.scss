@@ -1,0 +1,55 @@
+//Import all .scss files here
+@import "components/searchandoverview/MainView";
+
+$default-font: 'Roboto', sans-serif;
+$header-font: 'Roboto Slab', serif;
+$font-color: #05EB8C;
+$black: #000;
+$white: #fff;
+$light-gray: #ddd;
+$sidebar-width: 30%;
+$standard-padding: 10px;
+
+body {
+  margin: 20px;
+  font-family: $default-font;
+}
+
+h1, h2, h3, h4 {
+  color: $font-color;
+  font-family: $header-font;
+}
+
+header.tab-navigation {
+  border-bottom: solid 1px $black;
+  .tab a {
+    display: inline-block;
+    text-decoration: none;
+    color: $black;
+    padding: $standard-padding;
+    margin-right: 5px;
+    border: solid $black;
+    border-width: 1px 1px 0 1px;
+    //An active Tab
+    &.active-tab {
+      font-weight: bold;
+      background-color: $light-gray;
+    }
+  }
+}
+
+//The header of the components, containing searchbar etc
+.header {
+  height: 100px;
+}
+
+//The mainregion
+main .mid-region {
+  display: flex;
+  .content {
+    min-width: 100% - $sidebar-width;
+  }
+  .sidebar {
+    padding: $standard-padding;
+  }
+}
