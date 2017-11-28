@@ -4,6 +4,7 @@ import {YearSlider} from '../slider/YearSlider';
 import {ScatterChart} from '../charts/ScatterChart';
 import {ColumnChart} from '../charts/ColumnChart';
 import TouristService from '../../services/TouristService';
+import MuseumsService from '../../services/MuseumsService';
 import Util from '../../services/Util';
 import {Chart} from 'react-google-charts';
 
@@ -11,8 +12,8 @@ export class MainView extends React.Component {
     constructor() {
         super();
         this.state = {
-            touristInfosHeader: [],
             touristInfos: [],
+            museumsInfos: [],
             showScatterChart: true,
             showColumnChart: false
         };
@@ -38,8 +39,10 @@ export class MainView extends React.Component {
 
     componentDidMount() {
         let touristInfos = TouristService.getAllTouristInfosForGivenYear('2017');
+        let museumsInfos = MuseumsService.getAllMuseumsInfosForGivenYear('2017');
         this.setState({
-            touristInfos: touristInfos
+            touristInfos: touristInfos,
+            museumsInfos: museumsInfos
         })
     }
 
@@ -50,10 +53,10 @@ export class MainView extends React.Component {
                 <div className="mid-region">
                     <div className="chart">
                         {this.state.showScatterChart &&
-                        <ScatterChart touristInfos={this.state.touristInfos}/>
+                        <ScatterChart touristInfos={this.state.museumsInfos}/>
                         }
                         {this.state.showColumnChart &&
-                        <ColumnChart touristInfos={this.state.touristInfos}/>
+                        <ColumnChart touristInfos={this.state.museumsInfos}/>
                         }
                     </div>
                 </div>
