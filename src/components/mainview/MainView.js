@@ -1,8 +1,13 @@
 import React from 'react';
 import {MainViewHeader} from './MainViewHeader';
+import {YearSlider} from '../slider/YearSlider';
+import {ScatterChart} from '../charts/ScatterChart';
 import TouristService from '../../services/TouristService';
 import Util from '../../services/Util';
 import {Chart} from 'react-google-charts';
+
+const chartHeight = '400px';
+const chartWidth = '1000px';
 
 export class MainView extends React.Component {
     constructor() {
@@ -46,17 +51,10 @@ export class MainView extends React.Component {
                 <MainViewHeader />
                 <div className="mid-region">
                     <div className="chart">
-                        <Chart
-                            chartType="ScatterChart"
-                            data={this.state.graphUsableTouristInfos}
-                            options={{}}
-                            graph_id="ScatterChart"
-                            width="1000px"
-                            height="500px"
-                            legend_toggle
-                        />
+                        <ScatterChart touristInfos={this.state.graphUsableTouristInfos}/>
                     </div>
                 </div>
+                <YearSlider/>
             </div>
         );
     }
