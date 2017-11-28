@@ -4,6 +4,9 @@ const CHART_TYPES = {
     COLUMN: 'ColumnChart'
 };
 
+const CHART_HEIGHT = '400px';
+const CHART_WIDTH = '1000px';
+
 module.exports = {
 
     /**
@@ -115,6 +118,20 @@ module.exports = {
             default:
                 return '#' + this.getRandomIntLengthSix().toString();
         }
+    },
+
+    /**
+     * @returns {string} returns the default chart height
+     */
+    getDefaultChartHeight(){
+        return CHART_HEIGHT;
+    },
+
+    /**
+     * @returns {string} returns the default chart width
+     */
+    getDefaultChartWidth(){
+        return CHART_WIDTH;
     },
 
     /**

@@ -2,7 +2,7 @@ import React from 'react';
 import {Chart} from 'react-google-charts';
 import Util from '../../services/Util';
 
-export class ScatterChart extends React.Component {
+export class ColumnChart extends React.Component {
     constructor() {
         super();
     }
@@ -11,7 +11,7 @@ export class ScatterChart extends React.Component {
         return (
             <div className="chart">
                 <Chart
-                    chartType="ScatterChart"
+                    chartType="ColumnChart"
                     data={this.props.touristInfos}
                     options={{}}
                     graph_id="ScatterChart"
