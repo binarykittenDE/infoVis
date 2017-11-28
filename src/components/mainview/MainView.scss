@@ -1,8 +1,8 @@
-$problem-background: #D7EB05;
+@import "../../Lib";
 
 .problem-list {
   .problem {
-    background-color: $problem-background;
+    background-color: $primary-color;
     padding: 10px;
     margin-top: 10px;
     margin-bottom: 10px;

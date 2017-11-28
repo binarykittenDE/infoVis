@@ -8,7 +8,7 @@ export class MainViewHeader extends React.Component {
     render() {
         return (
             <div className="header">
-               Search and Overview header
+               Main header
             </div>
         );
     }

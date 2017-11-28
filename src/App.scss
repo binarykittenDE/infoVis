@@ -1,14 +1,6 @@
 //Import all .scss files here
 @import "components/mainview/MainView";
-
-$default-font: 'Roboto', sans-serif;
-$header-font: 'Roboto Slab', serif;
-$font-color: #05EB8C;
-$black: #000;
-$white: #fff;
-$light-gray: #ddd;
-$sidebar-width: 30%;
-$standard-padding: 10px;
+@import "Lib";
 
 body {
   margin: 20px;
@@ -16,24 +8,25 @@ body {
 }
 
 h1, h2, h3, h4 {
-  color: $font-color;
+  color: $primary-color;
   font-family: $header-font;
 }
 
 header.tab-navigation {
-  border-bottom: solid 1px $black;
+  border-bottom: solid 1px $secondary-color;
   .tab a {
     display: inline-block;
     text-decoration: none;
-    color: $black;
+    color: $text-on-secondary-color;
     padding: $standard-padding;
     margin-right: 5px;
-    border: solid $black;
+    border: solid $secondary-color;
     border-width: 1px 1px 0 1px;
     //An active Tab
     &.active-tab {
       font-weight: bold;
-      background-color: $light-gray;
+      background-color: $secondary-color-light;
+      border-color: $secondary-color-light;
     }
   }
 }
