@@ -2,8 +2,7 @@ import React from 'react';
 import {MainViewHeader} from './MainViewHeader';
 import TouristService from '../../services/TouristService';
 import Util from '../../services/Util';
-import {PieChart, Pie, Tooltip, Cell} from 'recharts';
-
+import {Chart} from 'react-google-charts';
 
 export class MainView extends React.Component {
     constructor() {
@@ -21,14 +20,15 @@ export class MainView extends React.Component {
             info => {
                 let touristInfos = Util.getResults(info);
                 let graphUsableTouristInfos = [];
+                graphUsableTouristInfos.push(['Monat', 'Anzahl Touristen']);
 
                 touristInfos.forEach(element => {
                     if (element.AUSPRAEGUNG == 'insgesamt') {
                         console.log(element);
-                        graphUsableTouristInfos.push({
-                            name: Util.monthNumberToMonthString(element.MONAT),
-                            value: parseInt(element.WERT)
-                        })
+                        graphUsableTouristInfos.push([
+                            Util.monthNumberToMonthString(element.MONAT),
+                            parseInt(element.WERT)
+                        ])
                     }
                 });
 
@@ -46,17 +46,15 @@ export class MainView extends React.Component {
                 <MainViewHeader />
                 <div className="mid-region">
                     <div className="chart">
-                        <PieChart width={800} height={400}>
-                            <Pie data={this.state.graphUsableTouristInfos} cx={200} cy={200} outerRadius={170}
-                                 fill="#8884d8" label>
-                                { //Map a color per entry
-                                    this.state.graphUsableTouristInfos.map((entry, index) => (
-                                        <Cell key={`cell-${index}`} fill={Util.getColor(index)}/>
-                                    ))
-                                }
-                            </Pie>
-                            <Tooltip/>
-                        </PieChart>
+                        <Chart
+                            chartType="ScatterChart"
+                            data={this.state.graphUsableTouristInfos}
+                            options={{}}
+                            graph_id="ScatterChart"
+                            width="1000px"
+                            height="500px"
+                            legend_toggle
+                        />
                     </div>
                 </div>
             </div>

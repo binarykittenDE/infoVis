@@ -1,10 +1,7 @@
 @import "../../Lib";
 
-.problem-list {
-  .problem {
-    background-color: $primary-color;
-    padding: 10px;
-    margin-top: 10px;
-    margin-bottom: 10px;
-  }
+.main-view {
+  .chart-type-toggler label ~ label {
+  margin-left: 20px;
+}
 }

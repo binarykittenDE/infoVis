@@ -1,4 +1,8 @@
 const BASIC_PATH = 'https://www.opengov-muenchen.de/api/action/datastore_search';
+const CHART_TYPES = {
+    SCATTER: 'ScatterChart',
+    COLUMN: 'ColumnChart'
+};
 
 module.exports = {
 
