@@ -31,6 +31,13 @@ module.exports = {
     },
 
     /**
+     * @returns {{SCATTER: string, COLUMN: string}} the possible chart types as an "enum"
+     */
+    getChartTypes(){
+        return CHART_TYPES
+    },
+
+    /**
      * Delete the item from the given list
      * @param array the array to delete the item from
      * @param item the item to delete

@@ -13,8 +13,28 @@ export class MainView extends React.Component {
         this.state = {
             touristInfos: [],
             touristInfosHeader: [],
-            graphUsableTouristInfos: []
+            graphUsableTouristInfos: [],
+            showScatterChart: true,
+            showColumnChart: false
         };
+        this.showChart = this.showChart.bind(this);
+    }
+
+    showChart(chartToShow) {
+        switch (chartToShow) {
+            case Util.getChartTypes().COLUMN:
+                this.setState({
+                    showScatterChart: false,
+                    showColumnChart: true
+                });
+                break;
+            case Util.getChartTypes().SCATTER:
+                this.setState({
+                    showScatterChart: true,
+                    showColumnChart: false
+                });
+                break;
+        }
     }
 
     componentDidMount() {
@@ -46,10 +66,15 @@ export class MainView extends React.Component {
     render() {
         return (
             <div className="main-view">
-                <MainViewHeader />
+                <MainViewHeader chartToShow={this.showChart}/>
                 <div className="mid-region">
                     <div className="chart">
+                        {this.state.showScatterChart &&
+                        <ScatterChart touristInfos={this.state.graphUsableTouristInfos}/>
+                        }
+                        {this.state.showColumnChart &&
                         <ColumnChart touristInfos={this.state.graphUsableTouristInfos}/>
+                        }
                     </div>
                 </div>
                 <YearSlider/>

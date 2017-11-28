@@ -1,5 +1,5 @@
 import React from 'react';
-import CHART_TYPES from '../../services/Util';
+import Util from '../../services/Util';
 
 export class MainViewHeader extends React.Component {
     constructor(props) {
@@ -15,14 +15,20 @@ export class MainViewHeader extends React.Component {
 
     handleScatterChange() {
         let isScatter = !(this.state.isScatter);
-        this.setState({isScatter: isScatter});
-        //this.props.setScatterChart(isScatter); //Call the handed method
+        this.setState({
+            isScatter: isScatter,
+            isColumn: !isScatter
+        });
+        this.props.chartToShow(Util.getChartTypes().SCATTER); //Call the handed method
     }
 
     handleColumnChange() {
         let isColumn = !(this.state.isColumn);
-        this.setState({isColumn: isColumn});
-        //this.props.setColumnChart(isColumn); //Call the handed method
+        this.setState({
+            isColumn: isColumn,
+            isScatter: !isColumn
+        });
+        this.props.chartToShow(Util.getChartTypes().COLUMN); //Call the handed method
     }
 
     render() {
