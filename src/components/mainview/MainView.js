@@ -11,9 +11,8 @@ export class MainView extends React.Component {
     constructor() {
         super();
         this.state = {
-            touristInfos: [],
             touristInfosHeader: [],
-            graphUsableTouristInfos: [],
+            touristInfos: [],
             showScatterChart: true,
             showColumnChart: false
         };
@@ -39,28 +38,9 @@ export class MainView extends React.Component {
 
     componentDidMount() {
         let touristInfos = TouristService.getAllTouristInfosForGivenYear('2017');
-        touristInfos.then(
-            info => {
-                let touristInfos = Util.getResults(info);
-                let graphUsableTouristInfos = [];
-                graphUsableTouristInfos.push(['Monat', 'Anzahl Touristen']);
-
-                touristInfos.forEach(element => {
-                    if (element.AUSPRAEGUNG == 'insgesamt') {
-                        console.log(element);
-                        graphUsableTouristInfos.push([
-                            Util.monthNumberToMonthString(element.MONAT),
-                            parseInt(element.WERT)
-                        ])
-                    }
-                });
-
-                this.setState({
-                    graphUsableTouristInfos: graphUsableTouristInfos,
-                    touristInfos: touristInfos
-                })
-            }
-        );
+        this.setState({
+            touristInfos: touristInfos
+        })
     }
 
     render() {
@@ -70,10 +50,10 @@ export class MainView extends React.Component {
                 <div className="mid-region">
                     <div className="chart">
                         {this.state.showScatterChart &&
-                        <ScatterChart touristInfos={this.state.graphUsableTouristInfos}/>
+                        <ScatterChart touristInfos={this.state.touristInfos}/>
                         }
                         {this.state.showColumnChart &&
-                        <ColumnChart touristInfos={this.state.graphUsableTouristInfos}/>
+                        <ColumnChart touristInfos={this.state.touristInfos}/>
                         }
                     </div>
                 </div>
