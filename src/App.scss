@@ -1,5 +1,6 @@
 //Import all .scss files here
 @import "components/mainview/MainView";
+@import "components/slider/YearSlider";
 @import "Lib";
 
 body {
@@ -19,7 +20,7 @@ h1, h2, h3, h4 {
 }
 
 header.tab-navigation {
-  border-bottom: solid 1px $secondary-color;
+  border-bottom: solid 1px $light-gray;
   .tab a {
     display: inline-block;
     text-decoration: none;

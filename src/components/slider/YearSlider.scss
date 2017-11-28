@@ -1,0 +1,8 @@
+@import "../../Lib";
+
+.year-slider{
+  //Overwrite color
+  .rangeslider-horizontal .rangeslider__fill{
+    background-color: $secondary-color;
+  }
+}
