@@ -7,6 +7,13 @@ body {
   font-family: $default-font;
 }
 
+//EVERYTHING is in here
+#content{
+  width: 80%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
 h1, h2, h3, h4 {
   color: $primary-color;
   font-family: $header-font;
@@ -39,10 +46,10 @@ header.tab-navigation {
 //The mainregion
 main .mid-region {
   display: flex;
-  .content {
-    min-width: 100% - $sidebar-width;
-  }
-  .sidebar {
-    padding: $standard-padding;
+  align-items: center;
+  //The charts
+  .chart{
+    display: inline-block;
+    width: 50%;
   }
 }
