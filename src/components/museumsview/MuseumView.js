@@ -47,38 +47,9 @@ export class MuseumView extends React.Component {
             });
             return museumsInfos;
         }).then(museumInfos => {
-            let museumsChartData = [
-                ['Monat'],
-                [Util.MONTHS.JANUARY],
-                [Util.MONTHS.FEBRUARY],
-                [Util.MONTHS.MARCH],
-                [Util.MONTHS.APRIL],
-                [Util.MONTHS.MAY],
-                [Util.MONTHS.JUNI],
-                [Util.MONTHS.JULY],
-                [Util.MONTHS.AUGUST],
-                [Util.MONTHS.SEPTEMBER],
-                [Util.MONTHS.OCTOBER],
-                [Util.MONTHS.NOVEMBER],
-                [Util.MONTHS.DECEMBER],
-            ];
-            museumInfos.forEach(info => {
-                museumsChartData[0].push(info.id);
-                info.data[1] !== undefined && museumsChartData[1].push(info.data[1][1]) || museumsChartData[1].push(0);
-                info.data[2] !== undefined && museumsChartData[2].push(info.data[2][1]) || museumsChartData[2].push(0);
-                info.data[3] !== undefined && museumsChartData[3].push(info.data[3][1]) || museumsChartData[3].push(0);
-                info.data[4] !== undefined && museumsChartData[4].push(info.data[4][1]) || museumsChartData[4].push(0);
-                info.data[5] !== undefined && museumsChartData[5].push(info.data[5][1]) || museumsChartData[5].push(0);
-                info.data[6] !== undefined && museumsChartData[6].push(info.data[6][1]) || museumsChartData[6].push(0);
-                info.data[7] !== undefined && museumsChartData[7].push(info.data[7][1]) || museumsChartData[7].push(0);
-                info.data[8] !== undefined && museumsChartData[8].push(info.data[8][1]) || museumsChartData[8].push(0);
-                info.data[9] !== undefined && museumsChartData[9].push(info.data[9][1]) || museumsChartData[9].push(0);
-                info.data[10] !== undefined && museumsChartData[10].push(info.data[10][1]) || museumsChartData[10].push(0);
-                info.data[11] !== undefined && museumsChartData[11].push(info.data[11][1]) || museumsChartData[11].push(0);
-                info.data[12] !== undefined && museumsChartData[12].push(info.data[12][1]) || museumsChartData[12].push(0);
-            });
+            let chartSuitableArray = Util.createMultiDimensionalChartSuitableArray(museumInfos);
             this.setState({
-                museumsChartData: museumsChartData
+                museumsChartData: chartSuitableArray
             });
         });
     }

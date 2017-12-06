@@ -177,6 +177,53 @@ module.exports = {
         return Math.floor(Math.random() * 1000000000);
     },
 
+    /**
+     * Get an array with months and values for different combined datasets and make a chart suitable array of it.
+     * An chart suitable array is for example:
+     * [
+     * ['Title 1', 'Title 2', 'Title 3', 'Title 4']
+     * ['Value 1', 2, 'Value 3', 4],
+     * ['Value 5', 6, 'Value 7', 8],
+     * ...
+     * ]
+     *
+     * @param arrayToMakeSuitable
+     * @returns {[*,*,*,*,*,*,*,*,*,*,*,*,*]}
+     */
+    createMultiDimensionalChartSuitableArray(arrayToMakeSuitable){
+        let chartSuitableArray = [
+            ['Monat'],
+            [MONTHS.JANUARY],
+            [MONTHS.FEBRUARY],
+            [MONTHS.MARCH],
+            [MONTHS.APRIL],
+            [MONTHS.MAY],
+            [MONTHS.JUNI],
+            [MONTHS.JULY],
+            [MONTHS.AUGUST],
+            [MONTHS.SEPTEMBER],
+            [MONTHS.OCTOBER],
+            [MONTHS.NOVEMBER],
+            [MONTHS.DECEMBER],
+        ];
+        arrayToMakeSuitable.forEach(info => {
+            chartSuitableArray[0].push(info.id);
+            info.data[1] !== undefined && chartSuitableArray[1].push(info.data[1][1]) || chartSuitableArray[1].push(0);
+            info.data[2] !== undefined && chartSuitableArray[2].push(info.data[2][1]) || chartSuitableArray[2].push(0);
+            info.data[3] !== undefined && chartSuitableArray[3].push(info.data[3][1]) || chartSuitableArray[3].push(0);
+            info.data[4] !== undefined && chartSuitableArray[4].push(info.data[4][1]) || chartSuitableArray[4].push(0);
+            info.data[5] !== undefined && chartSuitableArray[5].push(info.data[5][1]) || chartSuitableArray[5].push(0);
+            info.data[6] !== undefined && chartSuitableArray[6].push(info.data[6][1]) || chartSuitableArray[6].push(0);
+            info.data[7] !== undefined && chartSuitableArray[7].push(info.data[7][1]) || chartSuitableArray[7].push(0);
+            info.data[8] !== undefined && chartSuitableArray[8].push(info.data[8][1]) || chartSuitableArray[8].push(0);
+            info.data[9] !== undefined && chartSuitableArray[9].push(info.data[9][1]) || chartSuitableArray[9].push(0);
+            info.data[10] !== undefined && chartSuitableArray[10].push(info.data[10][1]) || chartSuitableArray[10].push(0);
+            info.data[11] !== undefined && chartSuitableArray[11].push(info.data[11][1]) || chartSuitableArray[11].push(0);
+            info.data[12] !== undefined && chartSuitableArray[12].push(info.data[12][1]) || chartSuitableArray[12].push(0);
+        });
+        return chartSuitableArray;
+    },
+
     deleteDuplicateMonths(listToDeleteDuplicates){
         //Arrays to store the month objects
         let januar, february, march, april, may, juni, july, august, september, october, november, december;
