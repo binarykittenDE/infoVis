@@ -10,15 +10,15 @@ export class ColumnChart extends React.Component {
     render() {
         return (
             <div className="chart">
-                <Chart
-                    chartType="ColumnChart"
-                    data={this.props.data}
-                    options={{title: this.props.title}}
-                    graph_id="ScatterChart"
-                    width={Util.getDefaultChartWidth()}
-                    height={Util.getDefaultChartHeight()}
-                    legend_toggle
-                />
+                    <Chart
+                        chartType="ColumnChart"
+                        data={this.props.data}
+                        options={{title: this.props.title}}
+                        graph_id="ScatterChart"
+                        width={Util.getDefaultChartWidth()}
+                        height={Util.getDefaultChartHeight()}
+                        legend_toggle
+                    />
             </div>
         );
     }

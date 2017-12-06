@@ -75,8 +75,6 @@ export class MuseumView extends React.Component {
                 info.data[11] !== undefined && museumsChartData[11].push(info.data[11][1]) || museumsChartData[11].push(0);
                 info.data[12] !== undefined && museumsChartData[12].push(info.data[12][1]) || museumsChartData[12].push(0);
             });
-            console.log('museumsChartData after fetching and sorting: ');
-            console.log(museumsChartData);
             this.setState({
                 museumsChartData: museumsChartData
             });

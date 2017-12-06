@@ -11,7 +11,6 @@ export class MainView extends React.Component {
     constructor() {
         super();
         this.state = {
-            touristInfos: [],
             showScatterChart: true,
             showColumnChart: false
         };
@@ -36,11 +35,7 @@ export class MainView extends React.Component {
     }
 
     componentDidMount() {
-        TouristService.getAllTouristInfosForGivenYear('2017').then(touristInfos => {
-            this.setState({
-                touristInfos: touristInfos
-            });
-        });
+        //Get all Data combined
     }
 
     render() {
@@ -49,12 +44,13 @@ export class MainView extends React.Component {
                 <DefaultHeader chartToShow={this.showChart}/>
                 <div className="mid-region">
                     <div className="chart">
-                        {(this.state.touristInfos !== undefined && this.state.showScatterChart) &&
+                        {/*{(this.state.touristInfos !== undefined && this.state.showScatterChart) &&
                         <ScatterChart infos={this.state.touristInfos} title="Anzahl Touristen pro Monat in München"/>
                         }
                         {(this.state.touristInfos !== undefined && this.state.showColumnChart) &&
                         <ColumnChart infos={this.state.touristInfos} title="Anzahl Touristen pro Monat in München"/>
-                        }
+                        }*/}
+                        Here there will be a chart, showing all data combined!
                     </div>
                 </div>
                 <YearSlider/>

@@ -8,10 +8,6 @@ export class ScatterChart extends React.Component {
     }
 
     render() {
-        {
-            console.log('arriving data in ScatterChart Component:');
-            console.log(this.props.data)
-        }
         return (
             <div className="chart">
                 <Chart
