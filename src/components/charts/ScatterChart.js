@@ -10,6 +10,7 @@ export class ScatterChart extends React.Component {
     render() {
         return (
             <div className="chart">
+                { (this.props.data !== undefined && this.props.data.length  > 1 )&&
                 <Chart
                     chartType="ScatterChart"
                     data={this.props.data}
@@ -19,6 +20,10 @@ export class ScatterChart extends React.Component {
                     height={Util.getDefaultChartHeight()}
                     legend_toggle
                 />
+                }
+                { (this.props.data == undefined || this.props.data.length < 2) &&
+                <p>Für dieses Jahr sind keine Daten vorhanden. Bitte wähle ein anderes Jahr aus:</p>
+                }
             </div>
         );
     }
