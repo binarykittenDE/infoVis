@@ -1,7 +1,7 @@
 import React from 'react';
 import Util from '../../services/Util';
 
-export class MainViewHeader extends React.Component {
+export class DefaultHeader extends React.Component {
     constructor(props) {
         super(props);
         this.state = {

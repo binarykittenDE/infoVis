@@ -1,5 +1,5 @@
 import React from 'react';
-import {TouristViewHeader} from './TouristViewHeader';
+import {DefaultHeader} from '../components/DefaultHeader';
 import {YearSlider} from '../slider/YearSlider';
 import {ScatterChart} from '../charts/ScatterChart';
 import {ColumnChart} from '../charts/ColumnChart';
@@ -55,7 +55,7 @@ export class TouristView extends React.Component {
     render() {
         return (
             <div className="main-view">
-                <TouristViewHeader chartToShow={this.showChart}/>
+                <DefaultHeader chartToShow={this.showChart}/>
                 <div className="mid-region">
                     <div className="chart">
                         {(this.state.touristInfos !== undefined && this.state.showScatterChart) &&
