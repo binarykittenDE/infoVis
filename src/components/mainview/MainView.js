@@ -11,10 +11,12 @@ export class MainView extends React.Component {
     constructor() {
         super();
         this.state = {
+            yearToFetch: '2017',
             showScatterChart: true,
             showColumnChart: false
         };
         this.showChart = this.showChart.bind(this);
+        this.changeYear = this.changeYear.bind(this);
     }
 
     showChart(chartToShow) {
@@ -38,6 +40,14 @@ export class MainView extends React.Component {
         //Get all Data combined
     }
 
+    changeYear(yearToSet) {
+        this.setState({
+            yearToFetch: yearToSet
+        });
+        this.componentDidMount();
+        this.render();
+    }
+
     render() {
         return (
             <div className="main-view">
@@ -53,7 +63,7 @@ export class MainView extends React.Component {
                         Here there will be a chart, showing all data combined!
                     </div>
                 </div>
-                <YearSlider/>
+                <YearSlider changeYear={this.changeYear}/>
             </div>
         );
     }

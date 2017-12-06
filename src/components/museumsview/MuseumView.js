@@ -13,12 +13,14 @@ export class MuseumView extends React.Component {
     constructor() {
         super();
         this.state = {
+            yearToFetch: '2017',
             museumsInfos: [],
             museumsChartData: [],
             showScatterChart: true,
             showColumnChart: false
         };
         this.showChart = this.showChart.bind(this);
+        this.changeYear = this.changeYear.bind(this);
     }
 
     showChart(chartToShow) {
@@ -39,7 +41,7 @@ export class MuseumView extends React.Component {
     }
 
     componentDidMount() {
-        MuseumsService.getAllMuseumsInfosForGivenYear('2017').then(museumsInfos => {
+        MuseumsService.getAllMuseumsInfosForGivenYear(this.state.yearToFetch).then(museumsInfos => {
             this.setState({
                 museumsInfos: museumsInfos,
             });
@@ -81,6 +83,14 @@ export class MuseumView extends React.Component {
         });
     }
 
+    changeYear(yearToSet) {
+        this.setState({
+            yearToFetch: yearToSet
+        });
+        this.componentDidMount();
+        this.render();
+    }
+
     render() {
         return (
             <div className="main-view">
@@ -95,7 +105,7 @@ export class MuseumView extends React.Component {
                         }
                     </div>
                 </div>
-                <YearSlider/>
+                <YearSlider changeYear={this.changeYear}/>
             </div>
         );
     }

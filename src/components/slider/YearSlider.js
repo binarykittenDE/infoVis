@@ -2,39 +2,47 @@ import React from 'react';
 import Slider from 'react-rangeslider'
 import 'react-rangeslider/lib/index.css'
 
+let labels = {
+    0: '2009',
+    1: '2010',
+    2: '2011',
+    3: '2012',
+    4: '2013',
+    5: '2014',
+    6: '2015',
+    7: '2016',
+    8: '2017'
+};
+
 export class YearSlider extends React.Component {
     constructor() {
         super();
         this.state = {
-            volume: 2
+            pickedYear: 8
         };
 
         this.handleOnChange = this.handleOnChange.bind(this);
     }
 
     handleOnChange(value) {
+        this.props.changeYear(labels[value]);
         this.setState({
-            volume: value
+            pickedYear: value
         })
     }
 
     render() {
-        let labels = {
-            0: '2015',
-            1: '2016',
-            2: '2017'
-        };
-        let { volume } = this.state;
+        let { pickedYear } = this.state;
         return (
             <div className="year-slider">
                 <Slider
-                    value={volume}
+                    value={pickedYear}
                     orientation="horizontal"
                     onChange={this.handleOnChange}
                     labels={labels}
                     tooltip={true}
                     min={0}
-                    max={2}
+                    max={8}
                     step={1}
                 />
             </div>

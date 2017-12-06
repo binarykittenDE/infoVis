@@ -13,11 +13,13 @@ export class TouristView extends React.Component {
     constructor() {
         super();
         this.state = {
+            yearToFetch: '2017',
             touristInfos: [],
             showScatterChart: true,
             showColumnChart: false
         };
         this.showChart = this.showChart.bind(this);
+        this.changeYear = this.changeYear.bind(this);
     }
 
     showChart(chartToShow) {
@@ -38,11 +40,19 @@ export class TouristView extends React.Component {
     }
 
     componentDidMount() {
-        TouristService.getAllTouristInfosForGivenYear('2017').then(touristInfos => {
+        TouristService.getAllTouristInfosForGivenYear(this.state.yearToFetch).then(touristInfos => {
             this.setState({
                 touristInfos: touristInfos
             });
         });
+    }
+
+    changeYear(yearToSet) {
+        this.setState({
+            yearToFetch: yearToSet
+        });
+        this.componentDidMount();
+        this.render();
     }
 
     render() {
@@ -59,7 +69,7 @@ export class TouristView extends React.Component {
                         }
                     </div>
                 </div>
-                <YearSlider/>
+                <YearSlider changeYear={this.changeYear}/>
             </div>
         );
     }
