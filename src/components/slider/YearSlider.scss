@@ -5,4 +5,11 @@
   .rangeslider-horizontal .rangeslider__fill{
     background-color: $secondary-color;
   }
+  .rangeslider-horizontal .rangeslider__handle:after{
+    width: 0;
+    height: 0;
+  }
+  .rangeslider__labels .rangeslider__label-item{
+    top: 0;
+  }
 }

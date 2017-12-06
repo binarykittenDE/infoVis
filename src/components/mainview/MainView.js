@@ -38,6 +38,9 @@ export class MainView extends React.Component {
 
     componentDidMount() {
         //Get all Data combined
+        //Todo: alle jeweiligen Datensets untereinander multiplizieren, sodass es nur noch "Freizeit" und "Theater"
+        // usw im Ganzen gibt? Dann evtl gemeinsam mit allem darstellen? wie dann filtern?
+        //Jahre vergleichen?!
     }
 
     changeYear(yearToSet) {
