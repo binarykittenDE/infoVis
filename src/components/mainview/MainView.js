@@ -42,6 +42,13 @@ export class MainView extends React.Component {
             this.setState({
                 touristInfos: touristInfos
             });
+        });
+        MuseumsService.getAllMuseumsInfosForGivenYear('2017').then(museumsInfos => {
+            console.log(museumsInfos[0].data);
+            let test = museumsInfos[0].data;
+            this.setState({
+                museumsInfos: test
+            });
         })
     }
 
@@ -51,11 +58,11 @@ export class MainView extends React.Component {
                 <MainViewHeader chartToShow={this.showChart}/>
                 <div className="mid-region">
                     <div className="chart">
-                        {(this.state.touristInfos !== undefined && this.state.showScatterChart) &&
-                        <ScatterChart touristInfos={this.state.touristInfos}/>
+                        {(this.state.museumsInfos !== undefined && this.state.showScatterChart) &&
+                        <ScatterChart touristInfos={this.state.museumsInfos}/>
                         }
-                        {(this.state.touristInfos !== undefined && this.state.showColumnChart) &&
-                        <ColumnChart touristInfos={this.state.touristInfos}/>
+                        {(this.state.museumsInfos !== undefined && this.state.showColumnChart) &&
+                        <ColumnChart touristInfos={this.state.museumsInfos}/>
                         }
                     </div>
                 </div>
