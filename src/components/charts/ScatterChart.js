@@ -12,7 +12,7 @@ export class ScatterChart extends React.Component {
             <div className="chart">
                 <Chart
                     chartType="ScatterChart"
-                    data={this.props.touristInfos}
+                    data={this.props.data}
                     options={{title: this.props.title}}
                     graph_id="ScatterChart"
                     width={Util.getDefaultChartWidth()}

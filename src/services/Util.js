@@ -36,6 +36,8 @@ function compareMonthValuesForMonthList(monthArrayToCheck, possibleNewEntryToCom
 
 module.exports = {
 
+    MONTHS,
+
     /**
      * @returns {string} the basic path of the REST api
      */

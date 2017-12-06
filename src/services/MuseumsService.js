@@ -11,11 +11,11 @@ const MUSEUM_TYPES = {
     },
     MUSEUMS_INSEL: {
         dataName: 'Deutsches Museum - Museumsinsel',
-        shownName: 'Deutsches Museum - Museumsinsel'
+        shownName: 'Museumsinsel'
     },
     VERKEHRSZENTRUM: {
         dataName: 'Deutsches Museum - Verkehrszentrum',
-        shownName: 'Deutsches Museum - Verkehrszentrum'
+        shownName: 'Verkehrszentrum'
     },
     STADTMUSEUM: {
         dataName: 'Mnchner Stadtmuseum',
@@ -57,7 +57,9 @@ function finishMuseumsArrayData(array) {
 }
 
 module.exports = {
-
+    getMuseumsTypes(){
+    return MUSEUM_TYPES;
+    },
     /**
      * @param year the year to return as a string
      * @returns {*|Promise.<TResult>} all available museums infos
@@ -111,12 +113,18 @@ module.exports = {
                     }
                 });
                 returnList.push(
-                    {id: MUSEUM_TYPES.BAYRISCHES_NATIONALMUSEUM.shownName, data: finishMuseumsArrayData(bayrischesNationalmuseum)},
+                    {
+                        id: MUSEUM_TYPES.BAYRISCHES_NATIONALMUSEUM.shownName,
+                        data: finishMuseumsArrayData(bayrischesNationalmuseum)
+                    },
                     {id: MUSEUM_TYPES.MUSEUMS_INSEL.shownName, data: finishMuseumsArrayData(museumsInsel)},
                     {id: MUSEUM_TYPES.VERKEHRSZENTRUM.shownName, data: finishMuseumsArrayData(verkehrsZentrum)},
                     {id: MUSEUM_TYPES.STADTMUSEUM.shownName, data: finishMuseumsArrayData(stadtMuseum)},
                     {id: MUSEUM_TYPES.MENSCH_UND_NATUR.shownName, data: finishMuseumsArrayData(menschUndNatur)},
-                    {id: MUSEUM_TYPES.GALERIE_IM_LENBACHHAUS.shownName, data: finishMuseumsArrayData(galerieImLenbachhaus)}
+                    {
+                        id: MUSEUM_TYPES.GALERIE_IM_LENBACHHAUS.shownName,
+                        data: finishMuseumsArrayData(galerieImLenbachhaus)
+                    }
                 );
                 return returnList;
             }
