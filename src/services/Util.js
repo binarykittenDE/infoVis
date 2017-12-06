@@ -8,19 +8,31 @@ const CHART_HEIGHT = '400px';
 const CHART_WIDTH = '1000px';
 
 const MONTHS = {
-     JANUARY: 'Januar' ,
-     FEBRUARY: 'Februar' ,
-     MARCH: 'März' ,
-     APRIL: 'April' ,
-     MAY: 'Mai' ,
-     JUNI: 'Juni' ,
-     JULY: 'Juli' ,
-     AUGUST: 'August' ,
-     SEPTEMBER: 'September' ,
-     OCTOBER: 'Oktober' ,
-     NOVEMBER: 'November' ,
-     DECEMBER: 'Dezember'
+    JANUARY: 'Januar',
+    FEBRUARY: 'Februar',
+    MARCH: 'März',
+    APRIL: 'April',
+    MAY: 'Mai',
+    JUNI: 'Juni',
+    JULY: 'Juli',
+    AUGUST: 'August',
+    SEPTEMBER: 'September',
+    OCTOBER: 'Oktober',
+    NOVEMBER: 'November',
+    DECEMBER: 'Dezember'
 };
+
+function compareMonthValuesForMonthList(monthArrayToCheck, possibleNewEntryToCompare) {
+    if (monthArrayToCheck.length < 1) {
+        monthArrayToCheck.push(possibleNewEntryToCompare);
+        return monthArrayToCheck;
+    } else {
+        let existingValue = monthArrayToCheck[0];
+        if (existingValue[1] < possibleNewEntryToCompare[1]) {
+            return [possibleNewEntryToCompare]
+        }
+    }
+}
 
 module.exports = {
 
@@ -164,7 +176,7 @@ module.exports = {
     },
 
     deleteDuplicateMonths(listToDeleteDuplicates){
-        //Array to hold the month objects
+        //Arrays to store the month objects
         let januar, february, march, april, may, juni, july, august, september, october, november, december;
         januar = [];
         february = [];
@@ -184,55 +196,43 @@ module.exports = {
         listToDeleteDuplicates.forEach(listEntry => {
             switch (listEntry[0]) {
                 case MONTHS.JANUARY:
-                    januar = this.compareMonthValuesForMonthList(januar, listEntry);
+                    januar = compareMonthValuesForMonthList(januar, listEntry);
                     break;
                 case MONTHS.FEBRUARY:
-                    february = this.compareMonthValuesForMonthList(february, listEntry);
+                    february = compareMonthValuesForMonthList(february, listEntry);
                     break;
                 case MONTHS.MARCH:
-                    march = this.compareMonthValuesForMonthList(march, listEntry);
+                    march = compareMonthValuesForMonthList(march, listEntry);
                     break;
                 case MONTHS.APRIL:
-                    april = this.compareMonthValuesForMonthList(april, listEntry);
+                    april = compareMonthValuesForMonthList(april, listEntry);
                     break;
                 case MONTHS.MAY:
-                    may = this.compareMonthValuesForMonthList(may, listEntry);
+                    may = compareMonthValuesForMonthList(may, listEntry);
                     break;
                 case MONTHS.JUNI:
-                    juni = this.compareMonthValuesForMonthList(juni, listEntry);
+                    juni = compareMonthValuesForMonthList(juni, listEntry);
                     break;
                 case MONTHS.JULY:
-                    july = this.compareMonthValuesForMonthList(july, listEntry);
+                    july = compareMonthValuesForMonthList(july, listEntry);
                     break;
                 case MONTHS.AUGUST:
-                    august = this.compareMonthValuesForMonthList(august, listEntry);
+                    august = compareMonthValuesForMonthList(august, listEntry);
                     break;
                 case MONTHS.SEPTEMBER:
-                    september = this.compareMonthValuesForMonthList(september, listEntry);
+                    september = compareMonthValuesForMonthList(september, listEntry);
                     break;
                 case MONTHS.OCTOBER:
-                    october = this.compareMonthValuesForMonthList(october, listEntry);
+                    october = compareMonthValuesForMonthList(october, listEntry);
                     break;
                 case MONTHS.NOVEMBER:
-                    november = this.compareMonthValuesForMonthList(november, listEntry);
+                    november = compareMonthValuesForMonthList(november, listEntry);
                     break;
                 case MONTHS.DECEMBER:
-                    december = this.compareMonthValuesForMonthList(december, listEntry);
+                    december = compareMonthValuesForMonthList(december, listEntry);
                     break;
             }
         });
         return returnList.concat(januar, february, march, april, may, juni, july, august, september, october, november);
-    },
-
-    compareMonthValuesForMonthList(monthArrayToCheck, possibleNewEntryToCompare){
-        if (monthArrayToCheck.length < 1) {
-            monthArrayToCheck.push(possibleNewEntryToCompare);
-            return monthArrayToCheck;
-        } else {
-            let existingValue = monthArrayToCheck[0];
-            if (existingValue[1] < possibleNewEntryToCompare[1]) {
-                return [possibleNewEntryToCompare]
-            }
-        }
     }
 };

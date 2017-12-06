@@ -3,6 +3,8 @@
  */
 import Util from './Util';
 
+const TOURIST_HEADER = ['Monat', 'Anzahl Touristen'];
+
 function getRawTouristInfos(year) {
     let resource_id = '4f00274a-ef75-41e5-b5c1-15f22c9f8a12';
     return $.ajax({
@@ -41,7 +43,7 @@ module.exports = {
             }
         ).then(infos => {
             let returnList = Util.deleteDuplicateMonths(infos);
-            returnList.unshift(['Monat', 'Anzahl Touristen']);
+            returnList.unshift(TOURIST_HEADER);
             return returnList;
         });
     }
