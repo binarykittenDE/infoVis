@@ -8,21 +8,6 @@ import Util from '../../services/Util';
 import {Chart} from 'react-google-charts';
 
 const MUSEUM_CHART_TITLE = 'Besucherzahlen für Münchens Museen';
-const MUSEUM_CHART_DATA_PREASSIGN = [
-    ['Monat'],
-    [Util.MONTHS.JANUARY],
-    [Util.MONTHS.FEBRUARY],
-    [Util.MONTHS.MARCH],
-    [Util.MONTHS.APRIL],
-    [Util.MONTHS.MAY],
-    [Util.MONTHS.JUNI],
-    [Util.MONTHS.JULY],
-    [Util.MONTHS.AUGUST],
-    [Util.MONTHS.SEPTEMBER],
-    [Util.MONTHS.OCTOBER],
-    [Util.MONTHS.NOVEMBER],
-    [Util.MONTHS.DECEMBER],
-];
 
 export class MuseumView extends React.Component {
     constructor() {
@@ -60,7 +45,21 @@ export class MuseumView extends React.Component {
             });
             return museumsInfos;
         }).then(museumInfos => {
-            let museumsChartData = MUSEUM_CHART_DATA_PREASSIGN;
+            let museumsChartData = [
+                ['Monat'],
+                [Util.MONTHS.JANUARY],
+                [Util.MONTHS.FEBRUARY],
+                [Util.MONTHS.MARCH],
+                [Util.MONTHS.APRIL],
+                [Util.MONTHS.MAY],
+                [Util.MONTHS.JUNI],
+                [Util.MONTHS.JULY],
+                [Util.MONTHS.AUGUST],
+                [Util.MONTHS.SEPTEMBER],
+                [Util.MONTHS.OCTOBER],
+                [Util.MONTHS.NOVEMBER],
+                [Util.MONTHS.DECEMBER],
+            ];
             museumInfos.forEach(info => {
                 museumsChartData[0].push(info.id);
                 info.data[1] !== undefined && museumsChartData[1].push(info.data[1][1]) || museumsChartData[1].push(0);
@@ -76,7 +75,7 @@ export class MuseumView extends React.Component {
                 info.data[11] !== undefined && museumsChartData[11].push(info.data[11][1]) || museumsChartData[11].push(0);
                 info.data[12] !== undefined && museumsChartData[12].push(info.data[12][1]) || museumsChartData[12].push(0);
             });
-            console.log('museumsChartData: ');
+            console.log('museumsChartData after fetching and sorting: ');
             console.log(museumsChartData);
             this.setState({
                 museumsChartData: museumsChartData

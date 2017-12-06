@@ -4,7 +4,6 @@ import {YearSlider} from '../slider/YearSlider';
 import {ScatterChart} from '../charts/ScatterChart';
 import {ColumnChart} from '../charts/ColumnChart';
 import TouristService from '../../services/TouristService';
-import MuseumsService from '../../services/MuseumsService';
 import Util from '../../services/Util';
 import {Chart} from 'react-google-charts';
 
@@ -13,7 +12,6 @@ export class MainView extends React.Component {
         super();
         this.state = {
             touristInfos: [],
-            museumsInfos: [],
             showScatterChart: true,
             showColumnChart: false
         };
@@ -43,13 +41,6 @@ export class MainView extends React.Component {
                 touristInfos: touristInfos
             });
         });
-        MuseumsService.getAllMuseumsInfosForGivenYear('2017').then(museumsInfos => {
-            console.log(museumsInfos[0].data);
-            let test = museumsInfos[0].data;
-            this.setState({
-                museumsInfos: test
-            });
-        })
     }
 
     render() {
@@ -59,10 +50,10 @@ export class MainView extends React.Component {
                 <div className="mid-region">
                     <div className="chart">
                         {(this.state.touristInfos !== undefined && this.state.showScatterChart) &&
-                        <ScatterChart touristInfos={this.state.touristInfos} title="Anzahl Touristen pro Monat in München"/>
+                        <ScatterChart infos={this.state.touristInfos} title="Anzahl Touristen pro Monat in München"/>
                         }
                         {(this.state.touristInfos !== undefined && this.state.showColumnChart) &&
-                        <ColumnChart touristInfos={this.state.touristInfos} title="Anzahl Touristen pro Monat in München"/>
+                        <ColumnChart infos={this.state.touristInfos} title="Anzahl Touristen pro Monat in München"/>
                         }
                     </div>
                 </div>

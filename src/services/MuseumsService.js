@@ -14,7 +14,7 @@ const MUSEUM_TYPES = {
         shownName: 'Museumsinsel'
     },
     VERKEHRSZENTRUM: {
-        dataName: 'Deutsches Museum - Verkehrszentrum',
+        dataName: 'Deutsches Museum - Verkehrszentrum ',
         shownName: 'Verkehrszentrum'
     },
     STADTMUSEUM: {
