@@ -58,11 +58,11 @@ export class MainView extends React.Component {
                 <MainViewHeader chartToShow={this.showChart}/>
                 <div className="mid-region">
                     <div className="chart">
-                        {(this.state.museumsInfos !== undefined && this.state.showScatterChart) &&
-                        <ScatterChart touristInfos={this.state.museumsInfos}/>
+                        {(this.state.touristInfos !== undefined && this.state.showScatterChart) &&
+                        <ScatterChart touristInfos={this.state.touristInfos} title="Anzahl Touristen pro Monat in München"/>
                         }
-                        {(this.state.museumsInfos !== undefined && this.state.showColumnChart) &&
-                        <ColumnChart touristInfos={this.state.museumsInfos}/>
+                        {(this.state.touristInfos !== undefined && this.state.showColumnChart) &&
+                        <ColumnChart touristInfos={this.state.touristInfos} title="Anzahl Touristen pro Monat in München"/>
                         }
                     </div>
                 </div>
