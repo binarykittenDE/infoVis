@@ -38,12 +38,13 @@ export class MainView extends React.Component {
     }
 
     componentDidMount() {
-        let touristInfos = TouristService.getAllTouristInfosForGivenYear('2017');
-        let museumsInfos = MuseumsService.getAllMuseumsInfosForGivenYear('2017');
+        let touristInfos = TouristService.getAllTouristInfosForGivenYear('2016');
+        let museumsInfos = MuseumsService.getAllMuseumsInfosForGivenYear('2016');
         this.setState({
             touristInfos: touristInfos,
             museumsInfos: museumsInfos
-        })
+        });
+        console.log(museumsInfos);
     }
 
     render() {

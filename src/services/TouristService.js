@@ -3,7 +3,7 @@
  */
 import Util from './Util';
 
-function getRawTouristInfos(year){
+function getRawTouristInfos(year) {
     let resource_id = '4f00274a-ef75-41e5-b5c1-15f22c9f8a12';
     return $.ajax({
         url: Util.getBasicPath(),
@@ -25,7 +25,7 @@ module.exports = {
     getAllTouristInfosForGivenYear(year) {
         let returnList = [];
 
-        getRawTouristInfos(year).then(
+        return getRawTouristInfos(year).then(
             singleInfo => {
                 let infos = Util.getResults(singleInfo);
 
@@ -39,10 +39,9 @@ module.exports = {
                         ])
                     }
                 });
+                return returnList;
             }
-        );
-
-        return returnList;
+        ).then(infos =>{Util.deleteDuplicateMonths(infos); return infos;});
     }
 };
 
