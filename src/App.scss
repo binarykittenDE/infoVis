@@ -1,39 +1,39 @@
 //Import all .scss files here
-@import "components/searchandoverview/MainView";
-
-$default-font: 'Roboto', sans-serif;
-$header-font: 'Roboto Slab', serif;
-$font-color: #05EB8C;
-$black: #000;
-$white: #fff;
-$light-gray: #ddd;
-$sidebar-width: 30%;
-$standard-padding: 10px;
+@import "components/mainview/MainView";
+@import "components/slider/YearSlider";
+@import "Lib";
 
 body {
   margin: 20px;
   font-family: $default-font;
 }
 
+//EVERYTHING is in here
+#content{
+  width: 1000px;
+  margin: 0 auto;
+}
+
 h1, h2, h3, h4 {
-  color: $font-color;
+  color: $primary-color;
   font-family: $header-font;
 }
 
 header.tab-navigation {
-  border-bottom: solid 1px $black;
+  border-bottom: solid 1px $light-gray;
   .tab a {
     display: inline-block;
     text-decoration: none;
-    color: $black;
+    color: $text-on-secondary-color;
     padding: $standard-padding;
     margin-right: 5px;
-    border: solid $black;
+    border: solid $secondary-color;
     border-width: 1px 1px 0 1px;
     //An active Tab
     &.active-tab {
       font-weight: bold;
-      background-color: $light-gray;
+      background-color: $secondary-color-light;
+      border-color: $secondary-color-light;
     }
   }
 }
@@ -46,10 +46,10 @@ header.tab-navigation {
 //The mainregion
 main .mid-region {
   display: flex;
-  .content {
-    min-width: 100% - $sidebar-width;
-  }
-  .sidebar {
-    padding: $standard-padding;
+  align-items: center;
+  //The charts
+  .chart{
+    display: inline-block;
+    width: 1000px;
   }
 }

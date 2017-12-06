@@ -1,58 +1,68 @@
 import React from 'react';
 import {MainViewHeader} from './MainViewHeader';
+import {YearSlider} from '../slider/YearSlider';
+import {ScatterChart} from '../charts/ScatterChart';
+import {ColumnChart} from '../charts/ColumnChart';
 import TouristService from '../../services/TouristService';
+import MuseumsService from '../../services/MuseumsService';
 import Util from '../../services/Util';
+import {Chart} from 'react-google-charts';
 
 export class MainView extends React.Component {
     constructor() {
         super();
         this.state = {
             touristInfos: [],
-            touristInfosHeader: []
+            museumsInfos: [],
+            showScatterChart: true,
+            showColumnChart: false
         };
+        this.showChart = this.showChart.bind(this);
+    }
+
+    showChart(chartToShow) {
+        switch (chartToShow) {
+            case Util.getChartTypes().COLUMN:
+                this.setState({
+                    showScatterChart: false,
+                    showColumnChart: true
+                });
+                break;
+            case Util.getChartTypes().SCATTER:
+                this.setState({
+                    showScatterChart: true,
+                    showColumnChart: false
+                });
+                break;
+        }
     }
 
     componentDidMount() {
-        let touristInfos = TouristService.getAllTouristInfos();
-        touristInfos.then(
-            info =>
-                this.setState({
-                    touristInfos: Util.getResults(info)
-                })
-        );
-        this.renderGoogleTable();
+        let touristInfos = TouristService.getAllTouristInfosForGivenYear('2016');
+        let museumsInfos = MuseumsService.getAllMuseumsInfosForGivenYear('2016');
+        this.setState({
+            touristInfos: touristInfos,
+            museumsInfos: museumsInfos
+        });
+        console.log(museumsInfos);
     }
 
     render() {
         return (
-            <div className="search-and-overview">
-                <MainViewHeader />
+            <div className="main-view">
+                <MainViewHeader chartToShow={this.showChart}/>
                 <div className="mid-region">
-                    <div className="content">
-                        <div className="problem-list">
-                            <div id="table_div"></div>
-                        </div>
+                    <div className="chart">
+                        {this.state.showScatterChart &&
+                        <ScatterChart touristInfos={this.state.museumsInfos}/>
+                        }
+                        {this.state.showColumnChart &&
+                        <ColumnChart touristInfos={this.state.museumsInfos}/>
+                        }
                     </div>
                 </div>
-
+                <YearSlider/>
             </div>
         );
-    }
-
-    renderGoogleTable(){
-        google.load("visualization", "1", {packages:["corechart"]});
-        google.charts.setOnLoadCallback(drawChart);
-
-        var drawChart = function(){
-            google.setOnLoadCallback(drawChart);
-            let data = google.visualization.arrayToDataTable(this.state.touristInfos);
-
-            var table = new google.visualization.Table(document.getElementById('table_div'));
-            table.draw(data, {showRowNumber: true, width: '100%', height: '100%'});
-        }
-    }
-
-    renderTable(currentInfo) {
-        return <p>{currentInfo.AUSPRAEGUNG}</p>;
     }
 }
