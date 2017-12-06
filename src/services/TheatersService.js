@@ -67,12 +67,12 @@ module.exports = {
      */
     getAllTheaterInfosForGivenYear(year) {
         let returnList = [];
-        let bayrischesNationaltheater = [];
-        let theatersInsel = [];
-        let verkehrsZentrum = [];
-        let stadtTheater = [];
-        let menschUndNatur = [];
-        let galerieImLenbachhaus = [];
+        let kammerspiele = [];
+        let nationalTheater = [];
+        let prinzregentenTheater = [];
+        let residenzTheater = [];
+        let schauburgTheaterDerJugend = [];
+        let gaertnerPlatz = [];
 
         return getRawTheatersInfos(year).then(
             singleInfo => {
@@ -83,32 +83,32 @@ module.exports = {
                 if(element.ZAHL === 'Besucher/innen'){
                     switch (element.AUSPRAEGUNG) {
                         case THEATER_TYPES.KAMMERSPIELE.dataName :
-                            bayrischesNationaltheater.push(
+                            kammerspiele.push(
                                 [Util.monthNumberToMonthString(element.MONAT),
                                     parseInt(element.WERT)]);
                             break;
                         case THEATER_TYPES.NATIONALTHEATER.dataName :
-                            theatersInsel.push(
+                            nationalTheater.push(
                                 [Util.monthNumberToMonthString(element.MONAT),
                                     parseInt(element.WERT)]);
                             break;
                         case THEATER_TYPES.PRINZREGENTENTHEATER.dataName :
-                            verkehrsZentrum.push(
+                            prinzregentenTheater.push(
                                 [Util.monthNumberToMonthString(element.MONAT),
                                     parseInt(element.WERT)]);
                             break;
                         case THEATER_TYPES.RESIDENZTHEATER.dataName :
-                            stadtTheater.push(
+                            residenzTheater.push(
                                 [Util.monthNumberToMonthString(element.MONAT),
                                     parseInt(element.WERT)]);
                             break;
                         case THEATER_TYPES.SCHAUBURG_THEATER_DER_JUGEND.dataName :
-                            menschUndNatur.push(
+                            schauburgTheaterDerJugend.push(
                                 [Util.monthNumberToMonthString(element.MONAT),
                                     parseInt(element.WERT)]);
                             break;
                         case THEATER_TYPES.GAERTNERPLATZ.dataName :
-                            galerieImLenbachhaus.push(
+                            gaertnerPlatz.push(
                                 [Util.monthNumberToMonthString(element.MONAT),
                                     parseInt(element.WERT)]);
                             break;
@@ -118,15 +118,15 @@ module.exports = {
                 returnList.push(
                     {
                         id: THEATER_TYPES.KAMMERSPIELE.shownName,
-                        data: finishTheatersArrayData(bayrischesNationaltheater)
+                        data: finishTheatersArrayData(kammerspiele)
                     },
-                    {id: THEATER_TYPES.NATIONALTHEATER.shownName, data: finishTheatersArrayData(theatersInsel)},
-                    {id: THEATER_TYPES.PRINZREGENTENTHEATER.shownName, data: finishTheatersArrayData(verkehrsZentrum)},
-                    {id: THEATER_TYPES.RESIDENZTHEATER.shownName, data: finishTheatersArrayData(stadtTheater)},
-                    {id: THEATER_TYPES.SCHAUBURG_THEATER_DER_JUGEND.shownName, data: finishTheatersArrayData(menschUndNatur)},
+                    {id: THEATER_TYPES.NATIONALTHEATER.shownName, data: finishTheatersArrayData(nationalTheater)},
+                    {id: THEATER_TYPES.PRINZREGENTENTHEATER.shownName, data: finishTheatersArrayData(prinzregentenTheater)},
+                    {id: THEATER_TYPES.RESIDENZTHEATER.shownName, data: finishTheatersArrayData(residenzTheater)},
+                    {id: THEATER_TYPES.SCHAUBURG_THEATER_DER_JUGEND.shownName, data: finishTheatersArrayData(schauburgTheaterDerJugend)},
                     {
                         id: THEATER_TYPES.GAERTNERPLATZ.shownName,
-                        data: finishTheatersArrayData(galerieImLenbachhaus)
+                        data: finishTheatersArrayData(gaertnerPlatz)
                     }
                 );
                 return returnList;
