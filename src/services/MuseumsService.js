@@ -44,6 +44,12 @@ function getRawMuseumsInfos(year) {
     });
 }
 
+/**
+ * Reverses the array, because the months are not in the correct order.
+ * Also adds the header.
+ * @param array the array to finish for returning the data
+ * @returns {*|Array.<T>} finished array
+ */
 function finishMuseumsArrayData(array) {
     let returnList = array.reverse();
     returnList.unshift(MUSEUMS_HEADER);
