@@ -4,7 +4,6 @@ import {YearSlider} from '../slider/YearSlider';
 import {ScatterChart} from '../charts/ScatterChart';
 import {ColumnChart} from '../charts/ColumnChart';
 import TouristService from '../../services/TouristService';
-import MuseumsService from '../../services/MuseumsService';
 import Util from '../../services/Util';
 import {Chart} from 'react-google-charts';
 
@@ -15,7 +14,6 @@ export class TouristView extends React.Component {
         super();
         this.state = {
             touristInfos: [],
-            museumsInfos: [],
             showScatterChart: true,
             showColumnChart: false
         };
@@ -45,13 +43,6 @@ export class TouristView extends React.Component {
                 touristInfos: touristInfos
             });
         });
-        MuseumsService.getAllMuseumsInfosForGivenYear('2017').then(museumsInfos => {
-            console.log(museumsInfos[0].data);
-            let test = museumsInfos[0].data;
-            this.setState({
-                museumsInfos: test
-            });
-        })
     }
 
     render() {
