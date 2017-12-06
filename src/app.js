@@ -6,6 +6,7 @@ import {MainView} from './components/mainview/MainView';
 import {TouristView} from './components/touristview/TouristView';
 import {MuseumView} from './components/museumsview/MuseumView';
 import {TheaterView} from './components/theaterview/TheaterView';
+import {OrchesterView} from './components/orchesterrview/OrchesterView';
 
 require("./App.scss");
 //var url = require("./assets/imagename.png");
@@ -28,6 +29,7 @@ class App extends React.Component {
                     <span className="tab"><Link to="/tourist" activeClassName="active-tab">Tourismus</Link></span>
                     <span className="tab"><Link to="/museums" activeClassName="active-tab">Museen</Link></span>
                     <span className="tab"><Link to="/theaters" activeClassName="active-tab">Theater</Link></span>
+                    <span className="tab"><Link to="/orchesters" activeClassName="active-tab">Orchester</Link></span>
                 </header>
                 <main>
                     {this.props.children}
@@ -46,6 +48,7 @@ ReactDOM.render((
             <Route path="tourist" component={TouristView}/>
             <Route path="museums" component={MuseumView}/>
             <Route path="theaters" component={TheaterView}/>
+            <Route path="orchesters" component={OrchesterView}/>
         </Route>
     </Router>
 ), document.getElementById('content'));
