@@ -41,7 +41,7 @@ module.exports = {
                 });
                 return returnList;
             }
-        ).then(infos =>{Util.deleteDuplicateMonths(infos); return infos;});
+        ).then(infos =>{ return Util.deleteDuplicateMonths(infos);});
     }
 };
 
