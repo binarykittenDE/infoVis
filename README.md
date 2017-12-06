@@ -6,6 +6,7 @@
 * `bin/app.bundle.js` the bundled code in one file.
 
 ## Dev
+Yes you need npm. But I guess you're a good (javascript) programmer. So you should have this!
 1. `npm install`
 2. Start the server with `npm run startServer`
 3. Navigate to `localhost:8080` in browser

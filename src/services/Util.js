@@ -187,41 +187,41 @@ module.exports = {
                     januar = this.compareMonthValuesForMonthList(januar, listEntry);
                     break;
                 case MONTHS.FEBRUARY:
-                    januar = this.compareMonthValuesForMonthList(february, listEntry);
+                    february = this.compareMonthValuesForMonthList(february, listEntry);
                     break;
                 case MONTHS.MARCH:
-                    januar = this.compareMonthValuesForMonthList(march, listEntry);
+                    march = this.compareMonthValuesForMonthList(march, listEntry);
                     break;
                 case MONTHS.APRIL:
-                    januar = this.compareMonthValuesForMonthList(april, listEntry);
+                    april = this.compareMonthValuesForMonthList(april, listEntry);
                     break;
                 case MONTHS.MAY:
-                    januar = this.compareMonthValuesForMonthList(may, listEntry);
+                    may = this.compareMonthValuesForMonthList(may, listEntry);
                     break;
                 case MONTHS.JUNI:
-                    januar = this.compareMonthValuesForMonthList(juni, listEntry);
+                    juni = this.compareMonthValuesForMonthList(juni, listEntry);
                     break;
                 case MONTHS.JULY:
-                    januar = this.compareMonthValuesForMonthList(july, listEntry);
+                    july = this.compareMonthValuesForMonthList(july, listEntry);
                     break;
                 case MONTHS.AUGUST:
-                    januar = this.compareMonthValuesForMonthList(august, listEntry);
+                    august = this.compareMonthValuesForMonthList(august, listEntry);
                     break;
                 case MONTHS.SEPTEMBER:
-                    januar = this.compareMonthValuesForMonthList(september, listEntry);
+                    september = this.compareMonthValuesForMonthList(september, listEntry);
                     break;
                 case MONTHS.OCTOBER:
-                    januar = this.compareMonthValuesForMonthList(october, listEntry);
+                    october = this.compareMonthValuesForMonthList(october, listEntry);
                     break;
                 case MONTHS.NOVEMBER:
-                    januar = this.compareMonthValuesForMonthList(november, listEntry);
+                    november = this.compareMonthValuesForMonthList(november, listEntry);
                     break;
                 case MONTHS.DECEMBER:
-                    januar = this.compareMonthValuesForMonthList(december, listEntry);
+                    december = this.compareMonthValuesForMonthList(december, listEntry);
                     break;
             }
-            return returnList.concat(januar, february, march, april, may, juni, july, august, september, october, november);
         });
+        return returnList.concat(januar, february, march, april, may, juni, july, august, september, october, november);
     },
 
     compareMonthValuesForMonthList(monthArrayToCheck, possibleNewEntryToCompare){

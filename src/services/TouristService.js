@@ -29,8 +29,6 @@ module.exports = {
             singleInfo => {
                 let infos = Util.getResults(singleInfo);
 
-                returnList.push(['Monat', 'Anzahl Touristen']);
-
                 infos.forEach(element => {
                     if (element.AUSPRAEGUNG == 'insgesamt') {
                         returnList.push([
@@ -41,7 +39,11 @@ module.exports = {
                 });
                 return returnList;
             }
-        ).then(infos =>{Util.deleteDuplicateMonths(infos); return infos;});
+        ).then(infos => {
+            let returnList = Util.deleteDuplicateMonths(infos);
+            returnList.unshift(['Monat', 'Anzahl Touristen']);
+            return returnList;
+        });
     }
 };
 
