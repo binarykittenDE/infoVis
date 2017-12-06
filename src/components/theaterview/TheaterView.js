@@ -7,7 +7,7 @@ import TheatersService from '../../services/TheatersService';
 import Util from '../../services/Util';
 import {Chart} from 'react-google-charts';
 
-const MUSEUM_CHART_TITLE = 'Besucherzahlen für Münchens Theater';
+const THEATER_CHART_TITLE = 'Besucherzahlen für Münchens Theater';
 
 export class TheaterView extends React.Component {
     constructor() {
@@ -69,10 +69,10 @@ export class TheaterView extends React.Component {
                 <div className="mid-region">
                     <div className="chart">
                         {(this.state.theatersChartData !== undefined && this.state.showScatterChart) &&
-                        <ScatterChart data={this.state.theatersChartData} title={MUSEUM_CHART_TITLE}/>
+                        <ScatterChart data={this.state.theatersChartData} title={THEATER_CHART_TITLE}/>
                         }
                         {(this.state.theatersChartData !== undefined && this.state.showColumnChart) &&
-                        <ColumnChart data={this.state.theatersChartData} title={MUSEUM_CHART_TITLE}/>
+                        <ColumnChart data={this.state.theatersChartData} title={THEATER_CHART_TITLE}/>
                         }
                     </div>
                 </div>
