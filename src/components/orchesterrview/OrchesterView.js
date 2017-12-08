@@ -67,14 +67,12 @@ export class OrchesterView extends React.Component {
             <div className="main-view">
                 <DefaultHeader chartToShow={this.showChart}/>
                 <div className="mid-region">
-                    <div className="chart">
                         {(this.state.orchestersChartData !== undefined && this.state.showScatterChart) &&
                         <ScatterChart data={this.state.orchestersChartData} title={ORCHESTER_CHART_TITLE}/>
                         }
                         {(this.state.orchestersChartData !== undefined && this.state.showColumnChart) &&
                         <ColumnChart data={this.state.orchestersChartData} title={ORCHESTER_CHART_TITLE}/>
                         }
-                    </div>
                 </div>
                 <YearSlider changeYear={this.changeYear}/>
             </div>

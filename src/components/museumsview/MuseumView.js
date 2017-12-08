@@ -67,14 +67,12 @@ export class MuseumView extends React.Component {
             <div className="main-view">
                 <DefaultHeader chartToShow={this.showChart}/>
                 <div className="mid-region">
-                    <div className="chart">
                         {(this.state.museumsChartData !== undefined && this.state.showScatterChart) &&
                         <ScatterChart data={this.state.museumsChartData} title={MUSEUM_CHART_TITLE}/>
                         }
                         {(this.state.museumsChartData !== undefined && this.state.showColumnChart) &&
                         <ColumnChart data={this.state.museumsChartData} title={MUSEUM_CHART_TITLE}/>
                         }
-                    </div>
                 </div>
                 <YearSlider changeYear={this.changeYear}/>
             </div>

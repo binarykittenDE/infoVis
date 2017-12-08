@@ -60,14 +60,12 @@ export class TouristView extends React.Component {
             <div className="main-view">
                 <DefaultHeader chartToShow={this.showChart}/>
                 <div className="mid-region">
-                    <div className="chart">
                         {(this.state.touristInfos !== undefined && this.state.showScatterChart) &&
                         <ScatterChart data={this.state.touristInfos} title={TOURIST_CHART_TITLE}/>
                         }
                         {(this.state.touristInfos !== undefined && this.state.showColumnChart) &&
                         <ColumnChart data={this.state.touristInfos} title={TOURIST_CHART_TITLE}/>
                         }
-                    </div>
                 </div>
                 <YearSlider changeYear={this.changeYear}/>
             </div>

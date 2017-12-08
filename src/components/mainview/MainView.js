@@ -56,7 +56,6 @@ export class MainView extends React.Component {
             <div className="main-view">
                 <DefaultHeader chartToShow={this.showChart}/>
                 <div className="mid-region">
-                    <div className="chart">
                         {/*{(this.state.touristInfos !== undefined && this.state.showScatterChart) &&
                         <ScatterChart infos={this.state.touristInfos} title="Anzahl Touristen pro Monat in München"/>
                         }
@@ -64,7 +63,6 @@ export class MainView extends React.Component {
                         <ColumnChart infos={this.state.touristInfos} title="Anzahl Touristen pro Monat in München"/>
                         }*/}
                         Here there will be a chart, showing all data combined!
-                    </div>
                 </div>
                 <YearSlider changeYear={this.changeYear}/>
             </div>

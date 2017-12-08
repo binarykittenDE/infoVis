@@ -67,14 +67,12 @@ export class TheaterView extends React.Component {
             <div className="main-view">
                 <DefaultHeader chartToShow={this.showChart}/>
                 <div className="mid-region">
-                    <div className="chart">
                         {(this.state.theatersChartData !== undefined && this.state.showScatterChart) &&
                         <ScatterChart data={this.state.theatersChartData} title={THEATER_CHART_TITLE}/>
                         }
                         {(this.state.theatersChartData !== undefined && this.state.showColumnChart) &&
                         <ColumnChart data={this.state.theatersChartData} title={THEATER_CHART_TITLE}/>
                         }
-                    </div>
                 </div>
                 <YearSlider changeYear={this.changeYear}/>
             </div>
