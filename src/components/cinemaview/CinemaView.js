@@ -1,7 +1,7 @@
 import React from 'react';
 import {DefaultHeader} from '../components/DefaultHeader';
 import {YearSlider} from '../slider/YearSlider';
-import {ScatterChart} from '../charts/ScatterChart';
+import {LineChart} from '../charts/LineChart';
 import {ColumnChart} from '../charts/ColumnChart';
 import CinemaService from '../../services/CinemaService';
 import Util from '../../services/Util';
@@ -61,7 +61,7 @@ export class CinemaView extends React.Component {
                 <DefaultHeader chartToShow={this.showChart}/>
                 <div className="mid-region">
                         {(this.state.cinemaInfos !== undefined && this.state.showScatterChart) &&
-                        <ScatterChart data={this.state.cinemaInfos} title={CINEMA_CHART_TITLE}/>
+                        <LineChart data={this.state.cinemaInfos} title={CINEMA_CHART_TITLE}/>
                         }
                         {(this.state.cinemaInfos !== undefined && this.state.showColumnChart) &&
                         <ColumnChart data={this.state.cinemaInfos} title={CINEMA_CHART_TITLE}/>

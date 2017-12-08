@@ -2,7 +2,7 @@ import React from 'react';
 import {Chart} from 'react-google-charts';
 import Util from '../../services/Util';
 
-export class ScatterChart extends React.Component {
+export class LineChart extends React.Component {
     constructor() {
         super();
     }
@@ -12,7 +12,7 @@ export class ScatterChart extends React.Component {
             <div className="chart">
                 { (this.props.data !== undefined && this.props.data.length  > 1 )&&
                 <Chart
-                    chartType="ScatterChart"
+                    chartType="LineChart"
                     data={this.props.data}
                     options={{title: this.props.title}}
                     graph_id="ScatterChart"

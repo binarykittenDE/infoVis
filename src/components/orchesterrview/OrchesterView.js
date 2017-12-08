@@ -1,7 +1,7 @@
 import React from 'react';
 import {DefaultHeader} from '../components/DefaultHeader';
 import {YearSlider} from '../slider/YearSlider';
-import {ScatterChart} from '../charts/ScatterChart';
+import {LineChart} from '../charts/LineChart';
 import {ColumnChart} from '../charts/ColumnChart';
 import OrchestersService from '../../services/OrchestersService';
 import Util from '../../services/Util';
@@ -68,7 +68,7 @@ export class OrchesterView extends React.Component {
                 <DefaultHeader chartToShow={this.showChart}/>
                 <div className="mid-region">
                         {(this.state.orchestersChartData !== undefined && this.state.showScatterChart) &&
-                        <ScatterChart data={this.state.orchestersChartData} title={ORCHESTER_CHART_TITLE}/>
+                        <LineChart data={this.state.orchestersChartData} title={ORCHESTER_CHART_TITLE}/>
                         }
                         {(this.state.orchestersChartData !== undefined && this.state.showColumnChart) &&
                         <ColumnChart data={this.state.orchestersChartData} title={ORCHESTER_CHART_TITLE}/>

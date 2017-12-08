@@ -5,19 +5,19 @@ export class DefaultHeader extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            isScatter: true,
+            isLine: true,
             isColumn: false
         };
 
-        this.handleScatterChange = this.handleScatterChange.bind(this);
+        this.handleLineChange = this.handleLineChange.bind(this);
         this.handleColumnChange = this.handleColumnChange.bind(this);
     }
 
-    handleScatterChange() {
-        let isScatter = !(this.state.isScatter);
+    handleLineChange() {
+        let isLine = !(this.state.isLine);
         this.setState({
-            isScatter: isScatter,
-            isColumn: !isScatter
+            isLine: isLine,
+            isColumn: !isLine
         });
         this.props.chartToShow(Util.getChartTypes().SCATTER); //Call the handed method
     }
@@ -26,7 +26,7 @@ export class DefaultHeader extends React.Component {
         let isColumn = !(this.state.isColumn);
         this.setState({
             isColumn: isColumn,
-            isScatter: !isColumn
+            isLine: !isColumn
         });
         this.props.chartToShow(Util.getChartTypes().COLUMN); //Call the handed method
     }
@@ -36,9 +36,9 @@ export class DefaultHeader extends React.Component {
             <div className="header">
                    <div className="chart-type-toggler">
                        <h3>Darstellungsform:</h3>
-                       <label>Scatter-Chart
-                           <input type="radio" checked={this.state.isScatter} onChange={this.handleScatterChange}/></label>
-                       <label>Column-Chart
+                       <label>Liniendiagramm
+                           <input type="radio" checked={this.state.isLine} onChange={this.handleLineChange}/></label>
+                       <label>Säulendiagramm
                            <input type="radio" checked={this.state.isColumn} onChange={this.handleColumnChange}/></label>
                    </div>
             </div>

@@ -1,7 +1,7 @@
 import React from 'react';
 import {DefaultHeader} from '../components/DefaultHeader';
 import {YearSlider} from '../slider/YearSlider';
-import {ScatterChart} from '../charts/ScatterChart';
+import {LineChart} from '../charts/LineChart';
 import {ColumnChart} from '../charts/ColumnChart';
 import TouristService from '../../services/TouristService';
 import Util from '../../services/Util';
@@ -61,7 +61,7 @@ export class TouristView extends React.Component {
                 <DefaultHeader chartToShow={this.showChart}/>
                 <div className="mid-region">
                         {(this.state.touristInfos !== undefined && this.state.showScatterChart) &&
-                        <ScatterChart data={this.state.touristInfos} title={TOURIST_CHART_TITLE}/>
+                        <LineChart data={this.state.touristInfos} title={TOURIST_CHART_TITLE}/>
                         }
                         {(this.state.touristInfos !== undefined && this.state.showColumnChart) &&
                         <ColumnChart data={this.state.touristInfos} title={TOURIST_CHART_TITLE}/>
