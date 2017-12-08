@@ -124,7 +124,7 @@ module.exports = {
                 });
                 returnList.push(
                     {id: LEISURE_TYPES.OLYMPIAPARK_AUSSEN.shownName, data: finishLeisuresArrayData(olympiaparkAussen)},
-                    {id: LEISURE_TYPES.KLEINE_OLYMPIAHALLE.shownName, data: finishLeisuresArrayData(olympiaHalle)},
+                    {id: LEISURE_TYPES.KLEINE_OLYMPIAHALLE.shownName, data: finishLeisuresArrayData(kleineOlympiahalle)},
                     {id: LEISURE_TYPES.OLYMPIA_EISSPORTZENTRUM.shownName, data: finishLeisuresArrayData(eissportZentrum)},
                     {id: LEISURE_TYPES.OLYMPIAHALLE.shownName, data: finishLeisuresArrayData(olympiaHalle)},
                     {id: LEISURE_TYPES.OLYMPIASTADION.shownName, data: finishLeisuresArrayData(olympiaStadion)},
