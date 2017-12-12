@@ -3,6 +3,7 @@ import Util from '../../services/Util';
 
 //todo Ein kleines Fragezeichen einfügen, das wenn man darauf klickt ein Overlay zeigt, wo erklärt wird dass man
 // Linien aus/undschalten kann wenn man drauf klickt usw
+// todo: reset button um alle Linien wieder einzuschalten
 
 export class DefaultHeader extends React.Component {
     constructor(props) {

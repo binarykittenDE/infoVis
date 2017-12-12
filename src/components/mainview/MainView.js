@@ -7,6 +7,8 @@ import TouristService from '../../services/TouristService';
 import Util from '../../services/Util';
 import {Chart} from 'react-google-charts';
 
+//Todo Pie-Chart??!
+
 export class MainView extends React.Component {
     constructor() {
         super();
