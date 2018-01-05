@@ -64,9 +64,29 @@ module.exports = {
     getLeisuresTypes(){
     return LEISURE_TYPES;
     },
+
+    /**
+     * @param year the year to fetch the data for
+     * @returns {*|Promise.<TResult>}  the total visitor number of all museums for the given year
+     */
+    getLeisuresInfosTotalVisitorNumber(year){
+        return getRawLeisuresInfos(year).then(
+            singleInfo => {
+                let returnNumber = 0;
+                let infos = Util.getResults(singleInfo);
+
+                infos.forEach(element => {
+                    if(element.WERT !== null && element.WERT !== ''){
+                        returnNumber += parseInt(element.WERT);
+                    }
+                });
+                return returnNumber;
+            });
+    },
+
     /**
      * @param year the year to return as a string
-     * @returns {*|Promise.<TResult>} all available leisures infos
+     * @returns {*|Promise.<TResult>} all available leisures infos sorted into the different leisure types data sets
      */
     getAllLeisuresInfosForGivenYear(year) {
         let returnList = [];

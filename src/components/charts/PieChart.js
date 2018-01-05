@@ -2,7 +2,7 @@ import React from 'react';
 import {Chart} from 'react-google-charts';
 import Util from '../../services/Util';
 
-export class ColumnChart extends React.Component {
+export class PieChart extends React.Component {
     constructor() {
         super();
     }
@@ -12,10 +12,10 @@ export class ColumnChart extends React.Component {
             <div className="chart">
                 { (this.props.data !== undefined && this.props.data.length  > 1 )&&
                 <Chart
-                    chartType="ColumnChart"
+                    chartType="PieChart"
                     data={this.props.data}
                     options={{title: this.props.title}}
-                    graph_id="ColumnChart"
+                    graph_id="PieChart"
                     width={Util.getDefaultChartWidth()}
                     height={Util.getDefaultChartHeight()}
                     legend_toggle

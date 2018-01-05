@@ -44,9 +44,29 @@ module.exports = {
     getOrchestersTypes(){
     return ORCHESTER_TYPES;
     },
+
+    /**
+     * @param year the year to fetch the data for
+     * @returns {*|Promise.<TResult>}  the total visitor number of all orchesters for the given year
+     */
+    getOrchesterInfosTotalVisitorNumber(year){
+        return getRawOrchestersInfos(year).then(
+            singleInfo => {
+                let returnNumber = 0;
+                let infos = Util.getResults(singleInfo);
+
+                infos.forEach(element => {
+                    if(element.WERT !== null && element.WERT !== ''){
+                        returnNumber += parseInt(element.WERT);
+                    }
+                });
+                return returnNumber;
+            });
+    },
+
     /**
      * @param year the year to return as a string
-     * @returns {*|Promise.<TResult>} all available orchesters infos
+     * @returns {*|Promise.<TResult>} all available orchesters infos sorted into the different orchester types data sets
      */
     getAllOrchesterInfosForGivenYear(year) {
         let returnList = [];

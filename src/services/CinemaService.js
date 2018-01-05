@@ -21,8 +21,27 @@ function getRawCinemaInfos(year) {
 module.exports = {
 
     /**
+     * @param year the year to fetch the data for
+     * @returns {*|Promise.<TResult>}  the total visitor number of all cinemas for the given year
+     */
+    getCinemaInfosTotalVisitorNumber(year){
+        return getRawCinemaInfos(year).then(
+            singleInfo => {
+                let returnNumber = 0;
+                let infos = Util.getResults(singleInfo);
+
+                infos.forEach(element => {
+                    if(element.WERT !== null && element.WERT !== ''){
+                        returnNumber += parseInt(element.WERT);
+                    }
+                });
+                return returnNumber; //todo kommt 0 raus
+            });
+    },
+
+    /**
      * @param year the year to return as a string
-     * @returns {*|Promise.<TResult>} all available cinema infos
+     * @returns {*|Promise.<TResult>} all available cinema infos sorted into the different cinema types data sets
      */
     getAllCinemaInfosForGivenYear(year) {
         let returnList = [];

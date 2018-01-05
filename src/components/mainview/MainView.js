@@ -1,48 +1,28 @@
 import React from 'react';
 import {DefaultHeader} from '../components/DefaultHeader';
 import {YearSlider} from '../slider/YearSlider';
-import {LineChart} from '../charts/LineChart';
-import {ColumnChart} from '../charts/ColumnChart';
-import TouristService from '../../services/TouristService';
+import {PieChart} from '../charts/PieChart';
+import MainService from '../../services/MainService';
 import Util from '../../services/Util';
 import {Chart} from 'react-google-charts';
 
-//Todo Pie-Chart??!
+//Todo Pie-Chart??! Prozentanzahl
 
 export class MainView extends React.Component {
     constructor() {
         super();
         this.state = {
             yearToFetch: '2017',
-            showScatterChart: true,
-            showColumnChart: false
+            allDataSetsTotalNumbers: []
         };
-        this.showChart = this.showChart.bind(this);
-        this.changeYear = this.changeYear.bind(this);
-    }
 
-    showChart(chartToShow) {
-        switch (chartToShow) {
-            case Util.getChartTypes().COLUMN:
-                this.setState({
-                    showScatterChart: false,
-                    showColumnChart: true
-                });
-                break;
-            case Util.getChartTypes().SCATTER:
-                this.setState({
-                    showScatterChart: true,
-                    showColumnChart: false
-                });
-                break;
-        }
     }
 
     componentDidMount() {
-        //Get all Data combined
-        //Todo: alle jeweiligen Datensets untereinander multiplizieren, sodass es nur noch "Freizeit" und "Theater"
-        // usw im Ganzen gibt? Dann evtl gemeinsam mit allem darstellen? wie dann filtern?
-        //Jahre vergleichen?!
+        let allDataSetsTotalNumbers = MainService.getAllDataSetsTotalNumbers(this.state.yearToFetch);
+        this.setState({
+            allDataSetsTotalNumbers: allDataSetsTotalNumbers
+        });
     }
 
     changeYear(yearToSet) {
@@ -58,13 +38,10 @@ export class MainView extends React.Component {
             <div className="main-view">
                 <DefaultHeader chartToShow={this.showChart}/>
                 <div className="mid-region">
-                        {/*{(this.state.touristInfos !== undefined && this.state.showScatterChart) &&
-                        <ScatterChart infos={this.state.touristInfos} title="Anzahl Touristen pro Monat in München"/>
-                        }
-                        {(this.state.touristInfos !== undefined && this.state.showColumnChart) &&
-                        <ColumnChart infos={this.state.touristInfos} title="Anzahl Touristen pro Monat in München"/>
-                        }*/}
-                        Here there will be a chart, showing all data combined!
+                    {this.state.allDataSetsTotalNumbers !== undefined &&
+                    <PieChart infos={this.state.allDataSetsTotalNumbers}
+                              title="Prozentuale Verteilung der von Touristen genutzten Kulturangebote"/>
+                    }
                 </div>
                 <YearSlider changeYear={this.changeYear}/>
             </div>

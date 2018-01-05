@@ -61,9 +61,29 @@ module.exports = {
     getTheatersTypes(){
     return THEATER_TYPES;
     },
+
+    /**
+     * @param year the year to fetch the data for
+     * @returns {*|Promise.<TResult>}  the total visitor number of all theaters for the given year
+     */
+    geTheaterInfosTotalVisitorNumber(year){
+        return getRawTheatersInfos(year).then(
+            singleInfo => {
+                let returnNumber = 0;
+                let infos = Util.getResults(singleInfo);
+
+                infos.forEach(element => {
+                    if(element.WERT !== null && element.WERT !== ''){
+                        returnNumber += parseInt(element.WERT);
+                    }
+                });
+                return returnNumber;
+            });
+    },
+
     /**
      * @param year the year to return as a string
-     * @returns {*|Promise.<TResult>} all available theaters infos
+     * @returns {*|Promise.<TResult>} all available theaters infos sorted into the different theater types data sets
      */
     getAllTheaterInfosForGivenYear(year) {
         let returnList = [];
@@ -78,7 +98,6 @@ module.exports = {
             singleInfo => {
 
                 let infos = Util.getResults(singleInfo);
-                console.log(infos);
                 infos.forEach(element => {
                 if(element.ZAHL === 'Besucher/innen'){
                     switch (element.AUSPRAEGUNG) {
