@@ -34,11 +34,10 @@ export class MainView extends React.Component {
     render() {
         return (
             <div className="main-view">
-                <DefaultHeader chartToShow={this.showChart}/>
                 <div className="mid-region">
                     {this.state.allDataSetsTotalNumbers !== undefined &&
                     <PieChart data={this.state.allDataSetsTotalNumbers}
-                              title="Prozentuale Verteilung der von Touristen genutzten Kulturangebote"/>
+                              title="Prozentuale Verteilung der genutzten Kulturangebote"/>
                     }
                 </div>
                 <YearSlider changeYear={this.changeYear}/>

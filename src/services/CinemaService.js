@@ -31,11 +31,11 @@ module.exports = {
                 let infos = Util.getResults(singleInfo);
 
                 infos.forEach(element => {
-                    if(element.WERT !== null && element.WERT !== ''){
+                    if(element.WERT !== null && element.WERT !== '' && element.AUSPRAEGUNG == 'insgesamt'){
                         returnNumber += parseInt(element.WERT);
                     }
                 });
-                return returnNumber; //todo kommt 0 raus
+                return returnNumber;
             });
     },
 
