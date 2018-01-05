@@ -16,8 +16,8 @@ export class PieChart extends React.Component {
                     data={this.props.data}
                     options={{title: this.props.title}}
                     graph_id="PieChart"
-                    width={Util.getDefaultChartWidth()}
-                    height={Util.getDefaultChartHeight()}
+                    width={typeof this.props.width !== 'undefined' ? this.props.width : Util.getDefaultChartWidth()}
+                    height={typeof this.props.height !== 'undefined' ? this.props.height : Util.getDefaultChartHeight()}
                     legend_toggle
                 />
                 }

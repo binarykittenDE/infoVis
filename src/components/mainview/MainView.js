@@ -37,7 +37,8 @@ export class MainView extends React.Component {
                 <div className="mid-region">
                     {this.state.allDataSetsTotalNumbers !== undefined &&
                     <PieChart data={this.state.allDataSetsTotalNumbers}
-                              title="Prozentuale Verteilung der genutzten Kulturangebote"/>
+                              title="Prozentuale Verteilung der genutzten Kulturangebote"
+                              height="480px"/>
                     }
                 </div>
                 <YearSlider changeYear={this.changeYear}/>
