@@ -12,6 +12,7 @@ export class MainView extends React.Component {
             yearToFetch: '2017',
             allDataSetsTotalNumbers: []
         };
+        this.changeYear = this.changeYear.bind(this);
     }
 
     componentDidMount() {
@@ -36,7 +37,7 @@ export class MainView extends React.Component {
                 <DefaultHeader chartToShow={this.showChart}/>
                 <div className="mid-region">
                     {this.state.allDataSetsTotalNumbers !== undefined &&
-                    <PieChart infos={this.state.allDataSetsTotalNumbers}
+                    <PieChart data={this.state.allDataSetsTotalNumbers}
                               title="Prozentuale Verteilung der von Touristen genutzten Kulturangebote"/>
                     }
                 </div>

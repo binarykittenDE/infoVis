@@ -33,7 +33,6 @@ module.exports = {
 
         return Promise.all([museumsPromise, cinemaPromise, leisurePromise, orchesterPromise, theaterPromise]).then(
             returnData => {
-                console.log([['Typ', 'Anzahl']].concat(returnData));
                 return [['Typ', 'Anzahl']].concat(returnData);
             }
         );
