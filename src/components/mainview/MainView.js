@@ -3,10 +3,7 @@ import {DefaultHeader} from '../components/DefaultHeader';
 import {YearSlider} from '../slider/YearSlider';
 import {PieChart} from '../charts/PieChart';
 import MainService from '../../services/MainService';
-import Util from '../../services/Util';
 import {Chart} from 'react-google-charts';
-
-//Todo Pie-Chart??! Prozentanzahl
 
 export class MainView extends React.Component {
     constructor() {
@@ -15,13 +12,13 @@ export class MainView extends React.Component {
             yearToFetch: '2017',
             allDataSetsTotalNumbers: []
         };
-
     }
 
     componentDidMount() {
-        let allDataSetsTotalNumbers = MainService.getAllDataSetsTotalNumbers(this.state.yearToFetch);
-        this.setState({
-            allDataSetsTotalNumbers: allDataSetsTotalNumbers
+        MainService.getAllDataSetsTotalNumbers(this.state.yearToFetch).then(allDataSetsTotalNumbers => {
+            this.setState({
+                allDataSetsTotalNumbers: allDataSetsTotalNumbers
+            });
         });
     }
 
