@@ -1,8 +1,6 @@
 /**
  * Created by franziskah on 02.11.16.
  */
-import Util from './Util';
-import TouristService from './TouristService';
 import MuseumsService from './MuseumsService';
 import CinemaService from './CinemaService';
 import LeisureService from './LeisureService';
@@ -13,30 +11,32 @@ module.exports = {
 
 
     getAllDataSetsTotalNumbers(year) {
-        //How much percent of the tourists? rechne...
-        let returnList = [['Typ', 'Anzahl']];
-
-        MuseumsService.getMuseumInfosTotalVisitorNumber(year).then(totalNumber => {
-            returnList.push(['Museen', totalNumber])
+        let museumsPromise = MuseumsService.getMuseumInfosTotalVisitorNumber(year).then(totalNumber => {
+            return (['Museen', totalNumber])
         });
 
-        CinemaService.getCinemaInfosTotalVisitorNumber(year).then(totalNumber => {
-            returnList.push(['Kinos', totalNumber])
+        let cinemaPromise = CinemaService.getCinemaInfosTotalVisitorNumber(year).then(totalNumber => {
+            return (['Kinos', totalNumber])
         });
 
-        LeisureService.getLeisuresInfosTotalVisitorNumber(year).then(totalNumber => {
-            returnList.push(['Freizeitangebote', totalNumber])
+        let leisurePromise = LeisureService.getLeisuresInfosTotalVisitorNumber(year).then(totalNumber => {
+            return (['Freizeitangebote', totalNumber])
         });
 
-        OrchestersService.getOrchesterInfosTotalVisitorNumber(year).then(totalNumber => {
-            returnList.push(['Orchester', totalNumber])
+        let orchesterPromise = OrchestersService.getOrchesterInfosTotalVisitorNumber(year).then(totalNumber => {
+            return (['Orchester', totalNumber])
         });
 
-        TheatersService.geTheaterInfosTotalVisitorNumber(year).then(totalNumber => {
-            returnList.push(['Theater', totalNumber])
+        let theaterPromise = TheatersService.geTheaterInfosTotalVisitorNumber(year).then(totalNumber => {
+            return (['Theater', totalNumber])
         });
 
-        return returnList;
+        return Promise.all([museumsPromise, cinemaPromise, leisurePromise, orchesterPromise, theaterPromise]).then(
+            returnData => {
+                console.log([['Typ', 'Anzahl']].concat(returnData));
+                return [['Typ', 'Anzahl']].concat(returnData);
+            }
+        );
     }
 };
 
