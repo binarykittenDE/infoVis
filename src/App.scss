@@ -1,6 +1,7 @@
 //Import all .scss files here
 @import "components/mainview/MainView";
 @import "components/slider/YearSlider";
+@import "components/components/DefaultHeader";
 @import "Lib";
 
 body {
@@ -39,11 +40,6 @@ header.tab-navigation {
   }
 }
 
-//The header of the components, containing searchbar etc
-.header {
-  height: 80px;
-}
-
 //The mainregion
 main .mid-region {
   display: flex;
@@ -57,6 +53,8 @@ main .mid-region {
 }
 
 .main-view {
+  height: 560px;
+  position: relative;
   .chart-type-toggler label ~ label {
     margin-left: 20px;
   }

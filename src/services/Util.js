@@ -4,7 +4,7 @@ const CHART_TYPES = {
     COLUMN: 'ColumnChart'
 };
 
-const CHART_HEIGHT = '400px';
+const CHART_HEIGHT = '470px';
 const CHART_WIDTH = '1000px';
 
 const MONTHS = {
