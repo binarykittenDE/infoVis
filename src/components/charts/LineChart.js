@@ -22,7 +22,7 @@ export class LineChart extends React.Component {
                 />
                 }
                 { (this.props.data == undefined || this.props.data.length < 2) &&
-                <p>Für dieses Jahr sind keine Daten vorhanden. Bitte wähle ein anderes Jahr aus:</p>
+                <p>Für dieses Jahr sind keine Daten vorhanden. Bitte wähle ein anderes Jahr aus.</p>
                 }
             </div>
         );
