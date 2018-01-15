@@ -84,7 +84,8 @@ module.exports = {
                         case ORCHESTER_TYPES.STAATSORCHESTER.dataName :
                             staatsOrchester.push(
                                 [Util.monthNumberToMonthString(element.MONAT),
-                                    parseInt(element.WERT)]);
+                                    parseInt(element.WERT)]); //todo wenn 0 drin --> packe ein NaN rein, oder alles
+                            // auf 0
                             break;
                         case ORCHESTER_TYPES.PHILHARMONIKER.dataName :
                             philharmoniker.push(
