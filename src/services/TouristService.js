@@ -8,6 +8,7 @@ const TOURIST_HEADER = ['Monat', 'Anzahl Touristen'];
 function getRawTouristInfos(year) {
     let resource_id = '4f00274a-ef75-41e5-b5c1-15f22c9f8a12';
     return $.ajax({
+        limit: Util.getLimitForDataFetching(),
         url: Util.getBasicPath(),
         data: {
             resource_id: resource_id,
@@ -54,7 +55,7 @@ module.exports = {
                     if (element.AUSPRAEGUNG == 'insgesamt') {
                         returnList.push([
                             Util.monthNumberToMonthString(element.MONAT),
-                            parseInt(element.WERT)
+                            Util.parseStringData(element.WERT)
                         ])
                     }
                 });

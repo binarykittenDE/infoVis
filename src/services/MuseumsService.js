@@ -34,6 +34,7 @@ const MUSEUM_TYPES = {
 function getRawMuseumsInfos(year) {
     let resource_id = '6c6a809e-91ee-4f3e-9268-a8b7bc38311c';
     return $.ajax({
+        limit: Util.getLimitForDataFetching(),
         url: Util.getBasicPath(),
         data: {
             resource_id: resource_id,
@@ -103,32 +104,32 @@ module.exports = {
                         case MUSEUM_TYPES.BAYRISCHES_NATIONALMUSEUM.dataName :
                             bayrischesNationalmuseum.push(
                                 [Util.monthNumberToMonthString(element.MONAT),
-                                    parseInt(element.WERT)]);
+                                    Util.parseStringData(element.WERT)]);
                             break;
                         case MUSEUM_TYPES.MUSEUMS_INSEL.dataName :
                             museumsInsel.push(
                                 [Util.monthNumberToMonthString(element.MONAT),
-                                    parseInt(element.WERT)]);
+                                    Util.parseStringData(element.WERT)]);
                             break;
                         case MUSEUM_TYPES.VERKEHRSZENTRUM.dataName :
                             verkehrsZentrum.push(
                                 [Util.monthNumberToMonthString(element.MONAT),
-                                    parseInt(element.WERT)]);
+                                    Util.parseStringData(element.WERT)]);
                             break;
                         case MUSEUM_TYPES.STADTMUSEUM.dataName :
                             stadtMuseum.push(
                                 [Util.monthNumberToMonthString(element.MONAT),
-                                    parseInt(element.WERT)]);
+                                    Util.parseStringData(element.WERT)]);
                             break;
                         case MUSEUM_TYPES.MENSCH_UND_NATUR.dataName :
                             menschUndNatur.push(
                                 [Util.monthNumberToMonthString(element.MONAT),
-                                    parseInt(element.WERT)]);
+                                    Util.parseStringData(element.WERT)]);
                             break;
                         case MUSEUM_TYPES.GALERIE_IM_LENBACHHAUS.dataName :
                             galerieImLenbachhaus.push(
                                 [Util.monthNumberToMonthString(element.MONAT),
-                                    parseInt(element.WERT)]);
+                                    Util.parseStringData(element.WERT)]);
                             break;
                     }
                 });

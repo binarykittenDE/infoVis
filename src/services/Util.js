@@ -22,6 +22,17 @@ const MONTHS = {
     DECEMBER: 'Dezember'
 };
 
+/**
+ * Some datasets contain double months. We only want the month with the bigger value, cause it contains the more
+ * current data.
+ *
+ * This method checks if the monthArrayToCheck already contains an entry, and if it does, it saves the entry with the
+ * bigger value and discards the smaller one.
+ *
+ * @param monthArrayToCheck
+ * @param possibleNewEntryToCompare
+ * @returns {*}
+ */
 function compareMonthValuesForMonthList(monthArrayToCheck, possibleNewEntryToCompare) {
     if (monthArrayToCheck.length < 1) {
         monthArrayToCheck.push(possibleNewEntryToCompare);
@@ -37,6 +48,15 @@ function compareMonthValuesForMonthList(monthArrayToCheck, possibleNewEntryToCom
 module.exports = {
 
     MONTHS,
+
+    /**
+     * Because the default data limit when fetching the data would be 100, we use 5000 just to be sure, and we won't
+     * lose data anymore
+     * @returns {number}
+     */
+    getLimitForDataFetching(){
+        return 5000;
+    },
 
     /**
      * @returns {string} the basic path of the REST api
@@ -178,7 +198,7 @@ module.exports = {
     },
 
     /**
-     * Get an array with months and values for different combined datasets and make a chart suitable array of it.
+     * Get an array with months and values for different combined datasets and make a chart-suitable array of it.
      * An chart suitable array is for example:
      * [
      * ['Title 1', 'Title 2', 'Title 3', 'Title 4']
@@ -207,23 +227,29 @@ module.exports = {
             [MONTHS.DECEMBER],
         ];
         arrayToMakeSuitable.forEach(info => {
+            //The id, aka data-title of the array
             chartSuitableArray[0].push(info.id);
-            info.data[1] !== undefined && chartSuitableArray[1].push(info.data[1][1]) || chartSuitableArray[1].push(0);
-            info.data[2] !== undefined && chartSuitableArray[2].push(info.data[2][1]) || chartSuitableArray[2].push(0);
-            info.data[3] !== undefined && chartSuitableArray[3].push(info.data[3][1]) || chartSuitableArray[3].push(0);
-            info.data[4] !== undefined && chartSuitableArray[4].push(info.data[4][1]) || chartSuitableArray[4].push(0);
-            info.data[5] !== undefined && chartSuitableArray[5].push(info.data[5][1]) || chartSuitableArray[5].push(0);
-            info.data[6] !== undefined && chartSuitableArray[6].push(info.data[6][1]) || chartSuitableArray[6].push(0);
-            info.data[7] !== undefined && chartSuitableArray[7].push(info.data[7][1]) || chartSuitableArray[7].push(0);
-            info.data[8] !== undefined && chartSuitableArray[8].push(info.data[8][1]) || chartSuitableArray[8].push(0);
-            info.data[9] !== undefined && chartSuitableArray[9].push(info.data[9][1]) || chartSuitableArray[9].push(0);
-            info.data[10] !== undefined && chartSuitableArray[10].push(info.data[10][1]) || chartSuitableArray[10].push(0);
-            info.data[11] !== undefined && chartSuitableArray[11].push(info.data[11][1]) || chartSuitableArray[11].push(0);
-            info.data[12] !== undefined && chartSuitableArray[12].push(info.data[12][1]) || chartSuitableArray[12].push(0);
+            //Run through all possible in data contained months from 1 (january) to 12 (december)
+            for (let i = 1; i <= 12; i++) {
+                if (info.data[i] !== undefined) {
+                    chartSuitableArray[i].push(info.data[i][1]);
+                } else {
+                    chartSuitableArray[i].push(NaN)
+                }
+            }
         });
         return chartSuitableArray;
     },
 
+
+    /**
+     * Some datasets contain double months. We only want the month with the bigger value, cause it contains the more
+     * current data.
+     *
+     * This method removes duplicated months.
+     * @param listToDeleteDuplicates the list containing the duplicated months
+     * @returns {Array.<*>}
+     */
     deleteDuplicateMonths(listToDeleteDuplicates){
         //Arrays to store the month objects
         let januar, february, march, april, may, juni, july, august, september, october, november, december;
@@ -283,5 +309,13 @@ module.exports = {
             }
         });
         return returnList.concat(januar, february, march, april, may, juni, july, august, september, october, november);
+    },
+
+    parseStringData(dataSetValue){
+        let dataSetValueAsInt = parseInt(dataSetValue);
+        if (isNaN(dataSetValueAsInt)) {
+            dataSetValueAsInt = null;
+        }
+        return dataSetValueAsInt;
     }
 };

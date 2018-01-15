@@ -10,6 +10,7 @@ function getRawCinemaInfos(year) {
     return $.ajax({
         url: Util.getBasicPath(),
         data: {
+            limit: Util.getLimitForDataFetching(),
             resource_id: resource_id,
             q: year
         },
@@ -54,7 +55,7 @@ module.exports = {
                     if (element.AUSPRAEGUNG == 'insgesamt') {
                         returnList.push([
                             Util.monthNumberToMonthString(element.MONAT),
-                            parseInt(element.WERT)
+                            Util.parseStringData(element.WERT)
                         ])
                     }
                 });

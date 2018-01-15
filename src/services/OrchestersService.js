@@ -18,6 +18,7 @@ const ORCHESTER_TYPES = {
 function getRawOrchestersInfos(year) {
     let resource_id = 'ce513fbe-6bbc-479c-8d2a-f9ffc2ae0a20';
     return $.ajax({
+        limit: Util.getLimitForDataFetching(),
         url: Util.getBasicPath(),
         data: {
             resource_id: resource_id,
@@ -83,13 +84,13 @@ module.exports = {
                         case ORCHESTER_TYPES.STAATSORCHESTER.dataName :
                             staatsOrchester.push(
                                 [Util.monthNumberToMonthString(element.MONAT),
-                                    parseInt(element.WERT)]); //todo wenn 0 drin --> packe ein NaN rein, oder alles
+                                    Util.parseStringData(element.WERT)]);
                             // auf 0
                             break;
                         case ORCHESTER_TYPES.PHILHARMONIKER.dataName :
                             philharmoniker.push(
                                 [Util.monthNumberToMonthString(element.MONAT),
-                                    parseInt(element.WERT)]);
+                                    Util.parseStringData(element.WERT)]);
                             break;
                     }
                 }
