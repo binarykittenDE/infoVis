@@ -39,8 +39,13 @@ export class TouristView extends React.Component {
         }
     }
 
-    componentDidMount() {
-        TouristService.getAllTouristInfosForGivenYear(this.state.yearToFetch).then(touristInfos => {
+    componentDidMount(givenYearToFetch) {
+        let yearToFetch = this.state.yearToFetch;
+        if(givenYearToFetch){
+            yearToFetch = givenYearToFetch;
+        }
+
+        TouristService.getAllTouristInfosForGivenYear(yearToFetch).then(touristInfos => {
             this.setState({
                 touristInfos: touristInfos
             });
@@ -51,7 +56,7 @@ export class TouristView extends React.Component {
         this.setState({
             yearToFetch: yearToSet
         });
-        this.componentDidMount();
+        this.componentDidMount(yearToSet);
         this.render();
     }
 

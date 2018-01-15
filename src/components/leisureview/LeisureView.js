@@ -40,8 +40,13 @@ export class LeisureView extends React.Component {
         }
     }
 
-    componentDidMount() {
-        LeisureService.getAllLeisuresInfosForGivenYear(this.state.yearToFetch).then(leisuresInfos => {
+    componentDidMount(givenYearToFetch) {
+        let yearToFetch = this.state.yearToFetch;
+        if(givenYearToFetch){
+            yearToFetch = givenYearToFetch;
+        }
+
+        LeisureService.getAllLeisuresInfosForGivenYear(yearToFetch).then(leisuresInfos => {
             this.setState({
                 leisuresInfos: leisuresInfos,
             });
@@ -58,7 +63,7 @@ export class LeisureView extends React.Component {
         this.setState({
             yearToFetch: yearToSet
         });
-        this.componentDidMount();
+        this.componentDidMount(yearToSet);
         this.render();
     }
 

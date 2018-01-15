@@ -39,8 +39,12 @@ export class CinemaView extends React.Component {
         }
     }
 
-    componentDidMount() {
-        CinemaService.getAllCinemaInfosForGivenYear(this.state.yearToFetch).then(cinemaInfos => {
+    componentDidMount(givenYearToFetch) {
+        let yearToFetch = this.state.yearToFetch;
+        if(givenYearToFetch){
+            yearToFetch = givenYearToFetch;
+        }
+        CinemaService.getAllCinemaInfosForGivenYear(yearToFetch).then(cinemaInfos => {
             this.setState({
                 cinemaInfos: cinemaInfos
             });
@@ -51,7 +55,7 @@ export class CinemaView extends React.Component {
         this.setState({
             yearToFetch: yearToSet
         });
-        this.componentDidMount();
+        this.componentDidMount(yearToSet);
         this.render();
     }
 

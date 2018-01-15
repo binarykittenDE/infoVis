@@ -1,5 +1,4 @@
 import React from 'react';
-import {DefaultHeader} from '../components/DefaultHeader';
 import {YearSlider} from '../slider/YearSlider';
 import {PieChart} from '../charts/PieChart';
 import MainService from '../../services/MainService';
@@ -15,8 +14,12 @@ export class MainView extends React.Component {
         this.changeYear = this.changeYear.bind(this);
     }
 
-    componentDidMount() {
-        MainService.getAllDataSetsTotalNumbers(this.state.yearToFetch).then(allDataSetsTotalNumbers => {
+    componentDidMount(givenYearToFetch) {
+        let yearToFetch = this.state.yearToFetch;
+        if(givenYearToFetch){
+            yearToFetch = givenYearToFetch;
+        }
+        MainService.getAllDataSetsTotalNumbers(yearToFetch).then(allDataSetsTotalNumbers => {
             this.setState({
                 allDataSetsTotalNumbers: allDataSetsTotalNumbers
             });
@@ -27,7 +30,7 @@ export class MainView extends React.Component {
         this.setState({
             yearToFetch: yearToSet
         });
-        this.componentDidMount();
+        this.componentDidMount(yearToSet);
         this.render();
     }
 

@@ -40,8 +40,13 @@ export class OrchesterView extends React.Component {
         }
     }
 
-    componentDidMount() {
-        OrchestersService.getAllOrchesterInfosForGivenYear(this.state.yearToFetch).then(orchestersInfos => {
+    componentDidMount(givenYearToFetch) {
+        let yearToFetch = this.state.yearToFetch;
+        if(givenYearToFetch){
+            yearToFetch = givenYearToFetch;
+        }
+
+        OrchestersService.getAllOrchesterInfosForGivenYear(yearToFetch).then(orchestersInfos => {
             this.setState({
                 orchestersInfos: orchestersInfos,
             });
@@ -58,7 +63,7 @@ export class OrchesterView extends React.Component {
         this.setState({
             yearToFetch: yearToSet
         });
-        this.componentDidMount();
+        this.componentDidMount(yearToSet);
         this.render();
     }
 

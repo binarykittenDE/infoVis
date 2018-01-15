@@ -40,8 +40,13 @@ export class MuseumView extends React.Component {
         }
     }
 
-    componentDidMount() {
-        MuseumsService.getAllMuseumsInfosForGivenYear(this.state.yearToFetch).then(museumsInfos => {
+    componentDidMount(givenYearToFetch) {
+        let yearToFetch = this.state.yearToFetch;
+        if(givenYearToFetch){
+            yearToFetch = givenYearToFetch;
+        }
+
+        MuseumsService.getAllMuseumsInfosForGivenYear(yearToFetch).then(museumsInfos => {
             this.setState({
                 museumsInfos: museumsInfos,
             });
@@ -58,7 +63,7 @@ export class MuseumView extends React.Component {
         this.setState({
             yearToFetch: yearToSet
         });
-        this.componentDidMount();
+        this.componentDidMount(yearToSet);
         this.render();
     }
 

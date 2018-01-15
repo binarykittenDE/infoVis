@@ -77,7 +77,6 @@ module.exports = {
             singleInfo => {
 
                 let infos = Util.getResults(singleInfo);
-                console.log(infos);
                 infos.forEach(element => {
                 if(element.ZAHL === 'Besucher/innen'){
                     switch (element.AUSPRAEGUNG) {

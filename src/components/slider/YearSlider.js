@@ -24,8 +24,6 @@ export class YearSlider extends React.Component {
         this.handleOnChange = this.handleOnChange.bind(this);
     }
 
-    //todo bug with changing the year. Double click?!!
-
     handleOnChange(value) {
         this.props.changeYear(labels[value]);
         this.setState({
@@ -34,11 +32,10 @@ export class YearSlider extends React.Component {
     }
 
     render() {
-        let { pickedYear } = this.state;
         return (
             <div className="year-slider">
                 <Slider
-                    value={pickedYear}
+                    value={this.state.pickedYear}
                     orientation="horizontal"
                     onChange={this.handleOnChange}
                     labels={labels}

@@ -40,8 +40,13 @@ export class TheaterView extends React.Component {
         }
     }
 
-    componentDidMount() {
-        TheatersService.getAllTheaterInfosForGivenYear(this.state.yearToFetch).then(theatersInfos => {
+    componentDidMount(givenYearToFetch) {
+        let yearToFetch = this.state.yearToFetch;
+        if(givenYearToFetch){
+            yearToFetch = givenYearToFetch;
+        }
+
+        TheatersService.getAllTheaterInfosForGivenYear(yearToFetch).then(theatersInfos => {
             this.setState({
                 theatersInfos: theatersInfos,
             });
@@ -58,7 +63,7 @@ export class TheaterView extends React.Component {
         this.setState({
             yearToFetch: yearToSet
         });
-        this.componentDidMount();
+        this.componentDidMount(yearToSet);
         this.render();
     }
 
