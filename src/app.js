@@ -18,7 +18,7 @@ class App extends React.Component {
     constructor() {
         super();
         this.state = {
-            hello: 'Welche Kulturangebote Münchens Touristen nutzen'
+            hello: 'Die Nutzung Münchens Kulturangebote - jetzt mit Bildern!'
         };
     }
 
