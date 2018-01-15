@@ -99,39 +99,38 @@ module.exports = {
             singleInfo => {
 
                 let infos = Util.getResults(singleInfo);
-                console.log(infos);
                 infos.forEach(element => {
                 if(element.ZAHL === 'Besucher/innen'){
                     switch (element.AUSPRAEGUNG) {
                         case THEATER_TYPES.KAMMERSPIELE.dataName :
                             kammerspiele.push(
                                 [Util.monthNumberToMonthString(element.MONAT),
-                                    Util.parseStringData(element.WERT)]);
+                                    parseInt(element.WERT)]);
                             break;
                         case THEATER_TYPES.NATIONALTHEATER.dataName :
                             nationalTheater.push(
                                 [Util.monthNumberToMonthString(element.MONAT),
-                                    Util.parseStringData(element.WERT)]);
+                                    parseInt(element.WERT)]);
                             break;
                         case THEATER_TYPES.PRINZREGENTENTHEATER.dataName :
                             prinzregentenTheater.push(
                                 [Util.monthNumberToMonthString(element.MONAT),
-                                    Util.parseStringData(element.WERT)]);
+                                    parseInt(element.WERT)]);
                             break;
                         case THEATER_TYPES.RESIDENZTHEATER.dataName :
                             residenzTheater.push(
                                 [Util.monthNumberToMonthString(element.MONAT),
-                                    Util.parseStringData(element.WERT)]);
+                                    parseInt(element.WERT)]);
                             break;
                         case THEATER_TYPES.SCHAUBURG_THEATER_DER_JUGEND.dataName :
                             schauburgTheaterDerJugend.push(
                                 [Util.monthNumberToMonthString(element.MONAT),
-                                    Util.parseStringData(element.WERT)]);
+                                    parseInt(element.WERT)]);
                             break;
                         case THEATER_TYPES.GAERTNERPLATZ.dataName :
                             gaertnerPlatz.push(
                                 [Util.monthNumberToMonthString(element.MONAT),
-                                    Util.parseStringData(element.WERT)]);
+                                    parseInt(element.WERT)]);
                             break;
                     }
                 }

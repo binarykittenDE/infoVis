@@ -109,37 +109,37 @@ module.exports = {
                         case LEISURE_TYPES.OLYMPIAPARK_AUSSEN.dataName :
                             olympiaparkAussen.push(
                                 [Util.monthNumberToMonthString(element.MONAT),
-                                    Util.parseStringData(element.WERT)]);
+                                    parseInt(element.WERT)]);
                             break;
                         case LEISURE_TYPES.KLEINE_OLYMPIAHALLE.dataName :
                             kleineOlympiahalle.push(
                                 [Util.monthNumberToMonthString(element.MONAT),
-                                    Util.parseStringData(element.WERT)]);
+                                    parseInt(element.WERT)]);
                             break;
                         case LEISURE_TYPES.OLYMPIA_EISSPORTZENTRUM.dataName :
                             eissportZentrum.push(
                                 [Util.monthNumberToMonthString(element.MONAT),
-                                    Util.parseStringData(element.WERT)]);
+                                    parseInt(element.WERT)]);
                             break;
                         case LEISURE_TYPES.OLYMPIAHALLE.dataName :
                             olympiaHalle.push(
                                 [Util.monthNumberToMonthString(element.MONAT),
-                                    Util.parseStringData(element.WERT)]);
+                                    parseInt(element.WERT)]);
                             break;
                         case LEISURE_TYPES.OLYMPIASTADION.dataName :
                             olympiaStadion.push(
                                 [Util.monthNumberToMonthString(element.MONAT),
-                                    Util.parseStringData(element.WERT)]);
+                                    parseInt(element.WERT)]);
                             break;
                         case LEISURE_TYPES.OLYMPIATURM.dataName :
                             olympiaTurm.push(
                                 [Util.monthNumberToMonthString(element.MONAT),
-                                    Util.parseStringData(element.WERT)]);
+                                    parseInt(element.WERT)]);
                             break;
                         case LEISURE_TYPES.TIERPARK.dataName :
                             tierPark.push(
                                 [Util.monthNumberToMonthString(element.MONAT),
-                                    Util.parseStringData(element.WERT)]);
+                                    parseInt(element.WERT)]);
                             break;
                     }
                 });

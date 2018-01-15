@@ -104,32 +104,32 @@ module.exports = {
                         case MUSEUM_TYPES.BAYRISCHES_NATIONALMUSEUM.dataName :
                             bayrischesNationalmuseum.push(
                                 [Util.monthNumberToMonthString(element.MONAT),
-                                    Util.parseStringData(element.WERT)]);
+                                    parseInt(element.WERT)]);
                             break;
                         case MUSEUM_TYPES.MUSEUMS_INSEL.dataName :
                             museumsInsel.push(
                                 [Util.monthNumberToMonthString(element.MONAT),
-                                    Util.parseStringData(element.WERT)]);
+                                    parseInt(element.WERT)]);
                             break;
                         case MUSEUM_TYPES.VERKEHRSZENTRUM.dataName :
                             verkehrsZentrum.push(
                                 [Util.monthNumberToMonthString(element.MONAT),
-                                    Util.parseStringData(element.WERT)]);
+                                    parseInt(element.WERT)]);
                             break;
                         case MUSEUM_TYPES.STADTMUSEUM.dataName :
                             stadtMuseum.push(
                                 [Util.monthNumberToMonthString(element.MONAT),
-                                    Util.parseStringData(element.WERT)]);
+                                    parseInt(element.WERT)]);
                             break;
                         case MUSEUM_TYPES.MENSCH_UND_NATUR.dataName :
                             menschUndNatur.push(
                                 [Util.monthNumberToMonthString(element.MONAT),
-                                    Util.parseStringData(element.WERT)]);
+                                    parseInt(element.WERT)]);
                             break;
                         case MUSEUM_TYPES.GALERIE_IM_LENBACHHAUS.dataName :
                             galerieImLenbachhaus.push(
                                 [Util.monthNumberToMonthString(element.MONAT),
-                                    Util.parseStringData(element.WERT)]);
+                                    parseInt(element.WERT)]);
                             break;
                     }
                 });

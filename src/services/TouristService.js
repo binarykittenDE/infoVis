@@ -55,7 +55,7 @@ module.exports = {
                     if (element.AUSPRAEGUNG == 'insgesamt') {
                         returnList.push([
                             Util.monthNumberToMonthString(element.MONAT),
-                            Util.parseStringData(element.WERT)
+                            parseInt(element.WERT)
                         ])
                     }
                 });

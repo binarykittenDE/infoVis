@@ -309,13 +309,5 @@ module.exports = {
             }
         });
         return returnList.concat(januar, february, march, april, may, juni, july, august, september, october, november);
-    },
-
-    parseStringData(dataSetValue){
-        let dataSetValueAsInt = parseInt(dataSetValue);
-        if (isNaN(dataSetValueAsInt)) {
-            dataSetValueAsInt = null;
-        }
-        return dataSetValueAsInt;
     }
 };
