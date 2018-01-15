@@ -1,3 +1,9 @@
+## Info
+This is an ReactJS app. If you need any help, check the [official page](https://reactjs.org/).
+
+It is created for the lecture "Informationsvisualisierung" at the LMU in the semester 2017/18 by the student 
+Franziska Haaf.
+
 ##  Files
 * `package.json`: This file holds various metadata relevant to this project. This file is used to give information to `npm` to identify our project and handle its dependencies.
 
@@ -6,7 +12,6 @@
 * `bin/app.bundle.js` the bundled code in one file.
 
 ## Dev
-Yes you need npm. But I guess you're a good (javascript) programmer. So you should have this!
 1. `npm install`
 2. Start the server with `npm run startServer`
 3. Navigate to `localhost:8080` in browser
